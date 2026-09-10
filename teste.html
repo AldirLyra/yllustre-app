@@ -1,0 +1,796 @@
+<html class="dark"
+    lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0"
+        name="viewport" />
+    <title>Yllustre - Agência</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com"
+        rel="preconnect" />
+    <link crossorigin=""
+        href="https://fonts.gstatic.com"
+        rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="assets/logo.jpg"
+        rel="icon"
+        type="image/x-icon" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f9e006",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .gpu-accelerated {
+            transform: translate3d(0, 0, 0);
+            will-change: scroll-position, transform;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('hidden');
+                    navLinks.classList.toggle('flex');
+                });
+            }
+
+            // Setup navigation buttons & Drag to scroll
+            const carouselContainer = document.getElementById('clients');
+            const track = document.getElementById('client-carousel-track');
+            const items = Array.from(document.querySelectorAll('.carousel-item'));
+
+            if (track && items.length > 0) {
+                const prevBtn = document.getElementById('carousel-prev');
+                const nextBtn = document.getElementById('carousel-next');
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        const itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(track).gap || 0);
+                        track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        const itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(track).gap || 0);
+                        track.scrollBy({ left: itemWidth, behavior: 'smooth' });
+                    });
+                }
+
+                // Custom Drag-to-Scroll implementation
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+                let isDragging = false;
+                let velocity = 0;
+                let momentumID;
+                let lastX = 0;
+                let lastTimestamp = 0;
+
+                const startDrag = (e) => {
+                    isDown = true;
+                    isDragging = false;
+                    track.classList.add('cursor-grabbing');
+                    track.classList.remove('snap-x', 'snap-mandatory', 'scroll-smooth');
+                    cancelAnimationFrame(momentumID);
+                    const pageX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                    startX = pageX - track.offsetLeft;
+                    scrollLeft = track.scrollLeft;
+                    lastX = pageX;
+                    lastTimestamp = performance.now();
+                    velocity = 0;
+                };
+
+                const stopDrag = () => {
+                    if (!isDown) return;
+                    isDown = false;
+                    track.classList.remove('cursor-grabbing');
+                    track.classList.add('snap-x', 'snap-mandatory', 'scroll-smooth');
+
+                    // Apply momentum
+                    if (Math.abs(velocity) > 0.5) {
+                        let amplitude = velocity * 120;
+                        let target = track.scrollLeft - amplitude;
+                        let timeConstant = 250;
+                        let timestamp = performance.now();
+                        let startScroll = track.scrollLeft;
+
+                        const step = (now) => {
+                            if (isDown) return; // Cancel if user clicked again
+                            const elapsed = now - timestamp;
+                            const progress = 1 - Math.exp(-elapsed / timeConstant);
+                            track.scrollLeft = startScroll - amplitude * progress;
+
+                            if (progress < 0.95 && Math.abs(amplitude * (1 - progress)) > 1) {
+                                momentumID = requestAnimationFrame(step);
+                            } else {
+                                // Snap to nearest item after momentum stops
+                                const itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(track).gap || 0);
+                                const currentScroll = track.scrollLeft;
+                                const nearestItemIndex = Math.round(currentScroll / itemWidth);
+                                track.scrollTo({
+                                    left: nearestItemIndex * itemWidth,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        };
+                        momentumID = requestAnimationFrame(step);
+                    } else {
+                        // Snap immediately if no momentum
+                        const itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(track).gap || 0);
+                        const currentScroll = track.scrollLeft;
+                        const nearestItemIndex = Math.round(currentScroll / itemWidth);
+                        track.scrollTo({
+                            left: nearestItemIndex * itemWidth,
+                            behavior: 'smooth'
+                        });
+                    }
+                };
+
+                const moveDrag = (e) => {
+                    if (!isDown) return;
+
+                    const pageX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                    const x = pageX - track.offsetLeft;
+                    const walk = (x - startX);
+
+                    if (Math.abs(walk) > 3) {
+                        isDragging = true;
+                        e.preventDefault();
+                    }
+
+                    track.scrollLeft = scrollLeft - walk;
+
+                    // Calculate velocity for momentum
+                    const currentTimestamp = performance.now();
+                    const deltaT = currentTimestamp - lastTimestamp;
+                    if (deltaT > 0) {
+                        const deltaX = pageX - lastX;
+                        velocity = deltaX / deltaT;
+                    }
+                    lastX = pageX;
+                    lastTimestamp = currentTimestamp;
+                };
+
+                // Mouse Events - bind to the whole section for better UX
+                const scrollArea = track; // Bind to track instead of container so it doesn't interfere with other elements
+                scrollArea.addEventListener('mousedown', startDrag);
+                window.addEventListener('mouseup', stopDrag);
+                scrollArea.addEventListener('mouseleave', stopDrag);
+                scrollArea.addEventListener('mousemove', moveDrag);
+
+                // Touch Events
+                scrollArea.addEventListener('touchstart', startDrag, { passive: true });
+                window.addEventListener('touchend', stopDrag);
+                scrollArea.addEventListener('touchmove', moveDrag, { passive: false });
+
+                // Prevent link click if dragged
+                track.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        if (isDragging) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+                    });
+                    // Prevent drag event on link from interfering with track drag
+                    link.addEventListener('dragstart', (e) => {
+                        e.preventDefault();
+                    });
+                });
+            }
+        });
+    </script>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark overflow-x-hidden w-full m-0 p-0">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col w-full">
+            <div class="px-4 sm:px-6 lg:px-8 flex flex-1 justify-center py-5 w-full">
+                <div class="layout-content-container flex flex-col w-full max-w-screen-xl flex-1">
+                    <!-- TopNavBar -->
+                    <header
+                        class="sticky top-5 z-50 flex items-center justify-between border border-solid border-white/10 bg-black/50 backdrop-blur-md rounded-xl px-4 md:px-6 py-3 w-full">
+                        <div class="flex items-center gap-4 text-white">
+                            <div class="size-10 text-primary flex-shrink-0">
+                                <img alt="logo"
+                                    class="w-full h-full object-cover rounded-full"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4yZVcTXXUc7JC0qx22hI5Gz2uYeJkae5LAH6WtkFrRLofxrstWhONJb6vfQAHZgjhb0E--9V1b5tXY0kqFib1DNjtf-6aeuB6-SYkhHPlGBIGqdo9SJfLsOcxG75lUaS-3_-hb5mlkq9FTk_ftI75CA4yJAG6yi4ywBrDJ0qJ173vd38hsnhFEBGoHFZW-oR-lqjWLmu7QolZYZLqDmUTAo2egReJfrxNAKjAol__p_js6bbUxdZQEaYcrTU1iYHwa8-yf0ay7cId" />
+                            </div>
+                            <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em] truncate">Yllustre
+                            </h2>
+                        </div>
+                        <div class="flex md:hidden">
+                            <button class="text-white p-2 hover:text-primary transition-colors focus:outline-none"
+                                id="mobile-menu-btn">
+                                <span class="material-symbols-outlined">menu</span>
+                            </button>
+                        </div>
+                        <div class="hidden absolute top-full left-0 right-0 mt-2 flex-col gap-4 bg-black/95 border border-white/10 rounded-xl p-6 md:static md:flex md:flex-row md:bg-transparent md:border-none md:p-0 md:items-center md:justify-end md:gap-8 flex-1 z-50 shadow-xl md:shadow-none"
+                            id="nav-links">
+                            <div
+                                class="flex flex-col md:flex-row items-center gap-6 md:gap-9 w-full md:w-auto text-center md:text-left">
+                                <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors block w-full md:w-auto py-2 md:py-0"
+                                    href="#services">Serviços</a>
+                                <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors block w-full md:w-auto py-2 md:py-0"
+                                    href="#portfolio">Portfólio</a>
+                                <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors block w-full md:w-auto py-2 md:py-0"
+                                    href="#testimonials">Depoimentos</a>
+                                <a class="text-white text-sm font-medium leading-normal hover:text-primary transition-colors block w-full md:w-auto py-2 md:py-0"
+                                    href="#contact">Contato</a>
+                            </div>
+                            <button
+                                class="w-full md:w-auto flex min-w-[84px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em] hover:bg-yellow-300 transition-colors mt-4 md:mt-0">
+                                <span class="truncate">Solicitar Orçamento</span>
+                            </button>
+                        </div>
+                    </header>
+                    <main class="flex flex-col gap-10 md:gap-20 w-full overflow-hidden mt-5">
+                        <!-- HeroSection -->
+                        <section class="w-full @container"
+                            id="hero">
+                            <div class="@[480px]:p-0 w-full">
+                                <div class="flex min-h-[60vh] md:min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 rounded-xl items-center justify-center text-center px-4 py-10 @[480px]:px-10 w-full"
+                                    data-alt="Dark abstract background with subtle yellow light flares, conveying a modern and technological feel."
+                                    style='background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBi3nUFlOgylrakbbdmX5o_phi8j_jisOvj7gM-rXxPCf4PykokDJQ1E9ahJhDdicMCWiLtm0_Y567MxvsLCtC5srLEtkyp6FqN0T0LMq86WrUjKzV-gzwBCHn8hRf6a_9hRRcqz3Zq2k1EshR1_rJoIv3QE-q2FiIpnnMRZIh7S2GcA3OqI24ckT1429r90jbMGZFD1KlzNAbsNA96D40zfp7_JdHJSs391ayEKCJm27pEIkTfD_Sabvr_eVXOBpsoNETkAWKFnsoO");'>
+                                    <div class="flex flex-col gap-4 w-full max-w-4xl mx-auto">
+                                        <h1
+                                            class="text-white text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] break-words">
+                                            Criando Histórias, Construindo Marcas</h1>
+                                        <h2
+                                            class="text-white/80 text-sm sm:text-base font-normal leading-normal @[480px]:text-lg @[480px]:font-normal @[480px]:leading-normal w-full max-w-2xl mx-auto break-words">
+                                            Criamos experiências digitais impactantes por meio de visuais deslumbrantes
+                                            e design de sites.</h2>
+                                    </div>
+                                    <button
+                                        class="flex min-w-[84px] w-full sm:w-auto sm:max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 @[480px]:h-12 @[480px]:px-8 bg-primary text-black text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-yellow-300 transition-colors">
+                                        <span class="truncate">Iniciar Seu Projeto</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- FeatureSection (Services) -->
+                        <section class="flex flex-col gap-10 py-10 w-full @container"
+                            id="services">
+                            <div class="flex flex-col gap-4 text-center w-full max-w-4xl mx-auto">
+                                <h1
+                                    class="text-white text-2xl font-bold leading-tight md:text-[32px] md:font-bold md:leading-tight md:tracking-light @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] break-words">
+                                    O Que Fazemos de Melhor</h1>
+                                <p
+                                    class="text-white/70 text-sm md:text-base font-normal leading-normal break-words max-w-2xl mx-auto">
+                                    De
+                                    vídeos cativantes a sites de alta conversão, oferecemos um conjunto completo de
+                                    serviços criativos para elevar a presença digital da sua marca.</p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-0 w-full">
+                                <div
+                                    class="flex flex-1 w-full gap-4 rounded-xl border border-white/10 bg-white/5 dark:bg-black/20 p-6 flex-col break-words h-full">
+                                    <div class="text-primary"><span class="material-symbols-outlined"
+                                            style="font-size: 32px;">movie</span></div>
+                                    <div class="flex flex-col gap-2">
+                                        <h2 class="text-white text-lg font-bold leading-tight">Filmagem de Story Maker
+                                        </h2>
+                                        <p class="text-white/60 text-sm font-normal leading-normal">Conteúdo envolvente
+                                            e de formato curto, perfeito para contar histórias nas redes sociais.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex flex-1 w-full gap-4 rounded-xl border border-white/10 bg-white/5 dark:bg-black/20 p-6 flex-col break-words h-full">
+                                    <div class="text-primary"><span class="material-symbols-outlined"
+                                            style="font-size: 32px;">videocam</span></div>
+                                    <div class="flex flex-col gap-2">
+                                        <h2 class="text-white text-lg font-bold leading-tight">Video Maker Filming</h2>
+                                        <p class="text-white/60 text-sm font-normal leading-normal">High-quality
+                                            promotional and corporate videos that capture your brand's essence.</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex flex-1 w-full gap-4 rounded-xl border border-white/10 bg-white/5 dark:bg-black/20 p-6 flex-col break-words h-full">
+                                    <div class="text-primary"><span class="material-symbols-outlined"
+                                            style="font-size: 32px;">code</span></div>
+                                    <div class="flex flex-col gap-2">
+                                        <h2 class="text-white text-lg font-bold leading-tight">Web &amp; Landing Pages
+                                        </h2>
+                                        <p class="text-white/60 text-sm font-normal leading-normal">Beautiful,
+                                            functional, and responsive websites that convert visitors into customers.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="flex flex-col gap-8 py-10 w-full"
+                            id="portfolio">
+                            <h2
+                                class="text-white text-center text-2xl md:text-4xl font-black leading-tight tracking-[-0.033em] break-words">
+                                Nosso Trabalho</h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                                <div class="group aspect-square overflow-hidden rounded-xl w-full bg-white/5">
+                                    <img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        data-alt="A sleek e-commerce website design displayed on a laptop screen"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH2lZR_onxFAZioJ9vlNpy75sUXGFn-0S3Vc79IUGSmWt6WO6f2TTRUnNZi5-TFm_ForhtuAhmZwuIXnoydbHX3JXsZiZ7TrhhbIEDAzptT9Y4cSvSpwdC1PNnehY9ZtusMwygDauu3LlMBtHrxKT_3HMtP3Tm8ZrItr7XDQD62z2BXWyx-YnRFH1zi2QS4RpRtt64XiVR_F5k2ams2d2JPTvVqhayTusJdHPSLjMGtHwSLbtjFBCV-OxIO9AQpcPrVZKLKtBn0nw7" />
+                                </div>
+                                <div class="group aspect-square overflow-hidden rounded-xl w-full bg-white/5">
+                                    <img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        data-alt="A sleek e-commerce website design displayed on a laptop screen"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXJ2r1DyN6l5Yu-sGR2Pzq8XBSdQXj0lxMWROI6-4RpZUHjjumtlAb0SSF2yuwUHPA_nwojvB27MDyf8ahSH0xcSYNsP1zD9_ld5vbatJaCJAvnbWocpOqzwdXtPwAmHQLKR50uD6UN_myu7AO6V7rhwN2uMyFg4vznL8qfIvdhbhXZsiEcZKiiqu_ohPdrEHf1q9KmPArjBbsRRg75XApNmoDOkNx3SaBQfHwWDVkyaq4Q4vPcSvH4B3o2wLh-IpeKKUbWn9HSx6j" />
+                                </div>
+                                <div class="group aspect-square overflow-hidden rounded-xl w-full bg-white/5">
+                                    <img class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        data-alt="A sleek e-commerce website design displayed on a laptop screen"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC45q7En7MS74m8Hhyl9rI8b7XWzLMgcbpdH5wKBwqjnLClquNG8_G_gK9foTK54BMAPqWTpM-FQjXmevgY5n4zUYjIksF48GLs5CRZktrJozyibrDY7rB-cKWnz7Vfys508-GeXs_R9pVzp_4rh0TuOk7Ql1EKjQ7FAZO3xbwgfZudQPfc12fuR-nanoogSR5-0yXMuOnS_w-E7tbdjdNleqGrfHvc9DSIRzYW9VQxZr1-Hp6jX6Rgl6D9R17DcR7DaoRPt-jRHVJv" />
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Clients Carousel Section -->
+                        <section
+                            class="flex flex-col gap-10 py-16 md:py-24 bg-black/40 rounded-3xl overflow-hidden relative w-full mb-10"
+                            id="clients">
+                            <div class="flex flex-col gap-2 text-center px-4 w-full">
+                                <h2
+                                    class="text-white text-2xl md:text-3xl lg:text-4xl font-black leading-tight tracking-tight break-words">
+                                    Nossos Clientes</h2>
+                                <p
+                                    class="text-white/40 text-xs md:text-sm font-medium uppercase tracking-[0.2em] break-words">
+                                    Empresas que já foram iluminadas pela Yllustre</p>
+                            </div>
+                            <div class="w-full group/carousel relative overflow-hidden">
+                                <div class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing no-scrollbar py-8 px-4 md:px-[calc(50%-130px)] lg:px-[calc(50%-150px)] gap-4 md:gap-6 lg:gap-10 items-center w-full select-none touch-pan-x gpu-accelerated"
+                                    id="client-carousel-track"
+                                    style="-webkit-overflow-scrolling: touch;">
+                                    <!-- Client Card 1 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Instituto Queiroz"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzrxlDYi7_HEAudOl05TNfwhg1zvNAa0GimdF0X444OPazgC7-sEGBhuW33gkFFSs64_WMNRJaDwvRQGZkaTPYD3Btqis4eiwEmlVh5DWrASa13RB1OL0OVTKrxVdckSYdl_U1jJBLapVk8qI7CrPTrvBaLyVrmYL5myNTLdVEO882QyD_F-lBIUsEVsN6StFrH__vf52PDchghXPUKi68VEtqSXo3dCPgRBJWbMXqZmQgyj1TuoxtpyAR2cdPIJ_vq58WhrKWylHN" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Instituto
+                                                Queiroz</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/queirozinstitutto"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@queirozinstitutto</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 2 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Clínica Vivence Odontologia"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtOsy9hrBPgiF_X7-HPSCUTUqWd1n8qKXDLrzXnRUQLzBFCHtrxskfi_5gOp1QTS1ZPtBqddup_QbDOF2zhyTQ-cZv_cS4lpSfSDRwA5MN8Se8z6tgS_HfF3g4F6NdTf_fEdIzFIU_rmUZ_WSK8CleFxzsb5nu70RafXA8s-c9V7EudjuqZe8k7-dSkVKj2-kINuxpl7CPxcRMh8LTt9UzyeakrBScWnLYa_gD06SKfSN1xUNnApnjlM7vFvJeuy0c_5S0yfVaZrTV" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Clínica
+                                                Vivence Odontologia</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/clinicavivenceodontologia"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@clinicavivenceodontologia</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 3 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Clínica Vivence Estética"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf6IXZ6C7iZHzs_f3zpPLAH5kSMgMkrCHc6RaOUmnZe_OH4UrcNPjXvznvwwyp31nYC_MpbtJZdTD61TxEHPzcuasC6OC98PgtOpjY1IIQjiQvuDndI_WCLON32vS2fC6o26SviKDAAynVG1htu-kurfpjJSuVG55NdHK0LCcO73wWzKTvhH9O8Ew7KgWI_t2-qtG6lxj0iIS-Swgzruxo_zWykq0ET6EHxOiwkjy0z7PlaXAtZTkiioAFHi2NaQdX76N3rdiaVzuq" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Clínica
+                                                Vivence Estética</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/clinicavivenceestetica_"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@clinicavivenceestetica_</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 4 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Oral Office Odontologia"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0mZ0F4znoKoQ-jYSJudLq2siNQAHngu-zg4NQ0LeKGKPCaC7ep8Q7_7OYmu4HBu8nwpoMSPzUTxsvd8zsGa2gAXnpqxZnu-sm9vScA5bdz6UawJsMR2s1JfKDp37CFPvGOV7nRF6Kcv9vpaFaWCsYg3swFkWcAQqXRunfdzwoAfR2e9fI585WfJAtNhvYCfjmjbILpOK80d6emKSH8D6_8-iikftgDXQpTUC5qN3co80UP1CiwO1H_CCumF-SMwdDaD6JeaQvMcAY" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Oral
+                                                Office Odontologia</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/oralofficepalmas"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@oralofficepalmas</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 5 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Cicera Fialles Hair"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8t46d7us0SJibwMIzCSZJx3Hw2VvTj27OJRoQBNqIV0xI33A10_a2Vv4NtZCbZWqNKs2vLSnW4F4ZW5v-pt1qEHlNXn4x_QBYcIrLKW1lBdaas-KyUvjyIbIcb0PaUbuBGelXra96EcHHuwSSO8uBCknEwOH6UOVuTycj5olOfa-oM9AXhvTMk3fKLnGwRqBBUR1CFFeB5ppzr9lnTY2NjHxC6Kk_viFQ-2ffLQkCfPmZCQjv1FiyVmp5t11zujdFzE8gNkx5tWss" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Cicera
+                                                Fialles Hair</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/cicera_fialles_hair_"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@cicera_fialles_hair_</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 6 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Tia Rê Odontopediatra"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiw_UbQzoQBrIT3Nc045-f7NJNHJL1UV2UnwDGXvRgQXK5ndu-CBLoWsSHm_6JTzQZNEW3C-wuZd0pk3aLAKa3habzLCivp7FgDEt87im-t99ltnQlAtkMXxDpUvpKxhxXHHtfX64vmlkYOUeP2-HZ2777_uX9mw1Cb9jyV4Nuu1pBq-V3y8nDEOY4kFbXBGXImRtSmoDMBvCBIlnsSE73hrMvgaGfovVHJntCSG03y6jW-qSbIRzrdvt1wgT_1pHxOpw9HcwrKjz2" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Tia
+                                                Rê
+                                                Odontopediatra</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/tiareodontopediatra"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@tiareodontopediatra</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 7 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Alspider Club"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQUuIfOkBOkla2u2ZQFpVVJT_7T2_U8_WJMcTFOywED6_Usa-xCswqJfI1j0TP6wbr0mVpxJMTKoaDcVWPv2fTlJmqg7XRiRdEXmUT_xp2ZTft5jLtgR3N8D5lbF4Y_Mxl2_-5apE01uXxFMuLEn7HXSYPwL_B_UwPvx0eSdTiB75pHBWGsBs_ybLEsniJVjC6ZXYgWUKFH3YQEeGzUwWNtiSMPmlt_-D98-CxfvhyuBegj09oZpJ70Jww6ChxMDBc10uHzKW-f1lv" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Alspider
+                                                Club</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/alspiderclub"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@alspiderclub</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 8 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Bendita Coalhada"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2BKMlqyzfFHpTVA5KwIY_ufUXonZhvZtgDwIrZfBt34ZLHuvprfb-5tuZgn8dI852BpPMZeVVd1wQOUPIs3FXsg48gROU4ov7mAp0jpCd_d9v2XlUv2WiwGse0LUM43ivEC6q7-AonbdtvaSf_aV5d-HrWIwaXSx5jJfekzyFmMX96cguZe2vGPg5RjCHCdSumBKERFNv-zGpud_hexjDB-Za7oQut5pzsdg4bb95caeZg3jFMM_HWiscnO66rIxs9099ff-SSN--" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Bendita
+                                                Coalhada</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/benditacoalhada"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@benditacoalhada</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 9 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Clínica SD"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKuSVAwMNv-TzIFYOBm4CtD9GwUCuwdQliPWPNv_h4xpNKmCD7zAvp9d7FdHZi2GkYFw0w7zUrZZnFpNo7lcR4vikH2QckA9CzB3AxhFvkKJNb4rUVEQ5c-CA6Wxdq3WzX8vkNDSDzFwhh_29H7-LwSFL3fHuyrOkNMNrmbrTJVOKEOL9SCtcRMITN-erG7LaaxNG1pgKqkVozz1l14-8llky20vVBCSj6AN6Ewf1Ic_fcU-Ly14SVtX5QMNnBY9RZz5dVCXzmqe0g" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Clínica
+                                                SD</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/clinicasd_"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@clinicasd_</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 10 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Celebrate Festas"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBt4qZ3P8oRfVbt-_9IF7ZyCWFSbm4yQl-kspkcy3lKxzyyKh5CEy-HIZBfWN2vfIoAaIwSAMn0KAY_zqGtqhhrzvkeM5DG3noCi-fA4UDdY4jZgzid7J1paGIE7DjWtT8p5uGWNc_8RZAx4-jiWUQgncWBkXrXHAM_JTYu116fG48s-5Z8rpSCu-8zxKAWq9oRbdedP1LirQvBP3aSqzVPAD5AW-Rqrx7cCHD9GX6jQfeL8Hy9flHmb79jzZsrdPB5nUSTe-f3RB3" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Celebrate
+                                                Festas</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/celebrate_festas"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@celebrate_festas</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 11 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Sabrina Fernandes Cantora"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8gLcPV5PO8od-WwS_sO6czMyG5BsfkK-t7MHuGxLTIowcFCu9dVWvcPkGy6VAHTsfdWDPuqSAhaXCDVy3Ebctoo0X0JO6iJ8ek_zU2idKWnw1dZ0jqcSirPsQMFu2RWf8sXDK3Fh6mMNXApMF_XWMPbvU3j2dzUaMTMyV5_ESHEGEwHTH1sVXuhBWcj0Dp6tzSzOmauDneNlAFTjcPoYuc1yIA4EcvOuGpFU6zsfxr7WEfsXNqzS0rzYY75wgIm0-82RpL3MvJNxh" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Sabrina
+                                                Fernandes Cantora</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/sabrinafernandescantora"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@sabrinafernandescantora</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 12 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                        <div
+                                            class="relative size-28 md:size-36 rounded-full p-1.5 bg-gradient-to-tr from-primary/60 to-transparent shadow-inner">
+                                            <div
+                                                class="w-full h-full rounded-full overflow-hidden bg-background-dark pointer-events-none">
+                                                <img class="h-full w-full object-cover"
+                                                    data-alt="Oral Health"
+                                                    draggable="false"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzrKC9KFPYSkr9MvL0hXJoDgQaOEh7sLkTTu-u-XLy0NCHaVIkgtbEX7tDHWlUDyLAhHLYsPvPtywR4gPuZV40txPV7lxdEuxqK86Z1tsNlatSTGDu7FNjGHEKVYldswowDJX8Z8Pibuk_8Wl-ZKgOF1dPZ53Cm6kjsmhqES9fAD8sB_kThBgvDvRSSWIcNMbYKuoUwaDeDZmoD4yRjLyby0diVPQptugkTsV6Zhy7XKm2gMmCt1OVAIivBdCUsBEQgC1fHBEFvBxi" />
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 flex flex-col items-center gap-3 w-full">
+                                            <span
+                                                class="text-white font-bold text-center text-lg md:text-xl tracking-wide break-words w-full">Oral
+                                                Health</span>
+                                            <a class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-black/50 border border-primary/20 text-primary text-xs md:text-sm font-medium hover:bg-primary/20 transition-colors shadow-sm w-full max-w-full overflow-hidden"
+                                                href="https://instagram.com/instoralhealth"
+                                                rel="noopener noreferrer"
+                                                target="_blank">
+                                                <span
+                                                    class="material-symbols-outlined !text-[16px] shrink-0">link</span>
+                                                <span class="opacity-90 truncate">@instoralhealth</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Client Card 13 -->
+                                    <div
+                                        class="carousel-item flex-none w-[260px] md:w-[300px] snap-center flex flex-col items-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(249,224,6,0.1)] transition-all duration-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Testimonials Section -->
+                        <section class="flex flex-col gap-6 px-0 py-10 w-full"
+                            id="testimonials">
+                            <h2
+                                class="text-white text-center text-2xl md:text-4xl font-black leading-tight tracking-[-0.033em] break-words">
+                                O Que Nossos Clientes Dizem</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                                <div
+                                    class="rounded-xl border border-white/10 bg-white/5 dark:bg-black/20 p-6 flex flex-col gap-4">
+                                    <p class="text-white/80 italic">"A Yllustre transformou nossa presença online. O
+                                        design do site não é apenas lindo, mas também incrivelmente eficaz para
+                                        converter visitantes. Uma equipe verdadeiramente profissional e criativa."</p>
+                                    <div class="flex items-center gap-4 mt-auto">
+                                        <img class="h-12 w-12 rounded-full object-cover flex-shrink-0"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzrxlDYi7_HEAudOl05TNfwhg1zvNAa0GimdF0X444OPazgC7-sEGBhuW33gkFFSs64_WMNRJaDwvRQGZkaTPYD3Btqis4eiwEmlVh5DWrASa13RB1OL0OVTKrxVdckSYdl_U1jJBLapVk8qI7CrPTrvBaLyVrmYL5myNTLdVEO882QyD_F-lBIUsEVsN6StFrH__vf52PDchghXPUKi68VEtqSXo3dCPgRBJWbMXqZmQgyj1TuoxtpyAR2cdPIJ_vq58WhrKWylHN"
+                                            alt="Instituto Queiroz" />
+                                        <div>
+                                            <p class="font-bold text-white">@queirozinstitutto</p>
+                                            <p class="text-sm text-white/60">Instituto Queiroz</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="rounded-xl border border-white/10 bg-white/5 dark:bg-black/20 p-6 flex flex-col gap-4">
+                                    <p class="text-white/80 italic">"O conteúdo de vídeo que produziram para nossa
+                                        campanha nas redes sociais foi incrível. O engajamento disparou! Recomendo muito
+                                        os serviços de filmagem deles."</p>
+                                    <div class="flex items-center gap-4 mt-auto">
+                                        <img class="h-12 w-12 rounded-full object-cover flex-shrink-0"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtOsy9hrBPgiF_X7-HPSCUTUqWd1n8qKXDLrzXnRUQLzBFCHtrxskfi_5gOp1QTS1ZPtBqddup_QbDOF2zhyTQ-cZv_cS4lpSfSDRwA5MN8Se8z6tgS_HfF3g4F6NdTf_fEdIzFIU_rmUZ_WSK8CleFxzsb5nu70RafXA8s-c9V7EudjuqZe8k7-dSkVKj2-kINuxpl7CPxcRMh8LTt9UzyeakrBScWnLYa_gD06SKfSN1xUNnApnjlM7vFvJeuy0c_5S0yfVaZrTV"
+                                            alt="Clínica Vivence" />
+                                        <div>
+                                            <p class="font-bold text-white">@clinicavivenceodontologia</p>
+                                            <p class="text-sm text-white/60">Clínica Vivence Odontologia</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Contact Section -->
+                        <section class="flex flex-col gap-6 px-0 py-10 w-full"
+                            id="contact">
+                            <div class="text-center">
+                                <h2
+                                    class="text-white text-2xl md:text-4xl font-black leading-tight tracking-[-0.033em] break-words">
+                                    Vamos Criar Algo Incrível</h2>
+                                <p class="text-white/60 text-sm md:text-base mt-3 max-w-xl mx-auto">Entre em contato e
+                                    vamos juntos elevar a presença digital da sua marca.</p>
+                            </div>
+                            <div class="flex justify-center mt-2">
+                                <a href="https://wa.me/556399999999"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex items-center gap-2 cursor-pointer justify-center overflow-hidden rounded-lg h-12 px-8 bg-primary text-black text-base font-bold leading-normal tracking-[0.015em] hover:bg-yellow-300 transition-colors">
+                                    <span class="material-symbols-outlined">chat</span>
+                                    <span>Iniciar Seu Projeto</span>
+                                </a>
+                            </div>
+                        </section>
+                    </main>
+
+                    <!-- Footer -->
+                    <footer class="text-center py-10 mt-10 border-t border-white/10 w-full">
+                        <div class="flex items-center justify-center gap-4 text-primary mb-4">
+                            <div class="size-10 flex-shrink-0">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4yZVcTXXUc7JC0qx22hI5Gz2uYeJkae5LAH6WtkFrRLofxrstWhONJb6vfQAHZgjhb0E--9V1b5tXY0kqFib1DNjtf-6aeuB6-SYkhHPlGBIGqdo9SJfLsOcxG75lUaS-3_-hb5mlkq9FTk_ftI75CA4yJAG6yi4ywBrDJ0qJ173vd38hsnhFEBGoHFZW-oR-lqjWLmu7QolZYZLqDmUTAo2egReJfrxNAKjAol__p_js6bbUxdZQEaYcrTU1iYHwa8-yf0ay7cId"
+                                    alt="logo"
+                                    class="w-full h-full object-cover rounded-full">
+                            </div>
+                            <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Yllustre</h2>
+                        </div>
+                        <p class="text-white/50 text-sm">© 2025 Yllustre. Todos os direitos reservados.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
