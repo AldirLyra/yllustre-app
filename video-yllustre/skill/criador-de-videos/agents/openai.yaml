@@ -1,0 +1,4 @@
+interface:
+  display_name: "Criador de vídeos premium"
+  short_description: "Vídeos completos com motion, parallax, transições e revisão"
+  default_prompt: "Use $criador-de-videos para criar um vídeo impactante deste projeto, com cenas organizadas, parallax controlado, transições fluidas, demonstrações animadas, acabamento premium e prévia revisável."

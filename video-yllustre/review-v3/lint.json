@@ -1,0 +1,139 @@
+{
+ "file": "C:\\Users\\aldir\\OneDrive\\Documentos\\yllustre-app\\video-yllustre\\http:\\127.0.0.1:4321",
+ "width": 1080,
+ "height": 1920,
+ "duration": 45,
+ "samples": [
+  0.63,
+  1.88,
+  3.13,
+  4.38,
+  5.63,
+  6.88,
+  8.13,
+  9.38,
+  10.63,
+  11.88,
+  13.13,
+  14.38,
+  15.63,
+  16.88,
+  18.13,
+  19.38,
+  20.63,
+  21.88,
+  23.13,
+  24.38,
+  25.63,
+  26.88,
+  28.13,
+  29.38,
+  30.63,
+  31.88,
+  33.13,
+  34.38,
+  35.63,
+  36.88,
+  38.13,
+  39.38,
+  40.63,
+  41.88,
+  43.13,
+  44.38
+ ],
+ "rules": [
+  {
+   "id": "C1",
+   "name": "corner/edge micro-label",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "C2",
+   "name": "tracked uppercase label",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "C3",
+   "name": "chapter / counter index",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "C4",
+   "name": "production metadata (BPM/FPS/timecode/version)",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "C5",
+   "name": "mono micro-label",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "C6",
+   "name": "header/footer bar or row",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "C7",
+   "name": "kicker above headline",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "D1",
+   "name": "deck layout (left-anchored headline block)",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "P1",
+   "name": "progress bar",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "T1",
+   "name": "letter-typed headline",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "V1",
+   "name": "greeting header",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "V2",
+   "name": "label . value line",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "V3",
+   "name": "status dot beside text",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "V4",
+   "name": "zinc-grey text",
+   "status": "PASS",
+   "hits": []
+  },
+  {
+   "id": "V5",
+   "name": "vibe-coded UI card (cluster)",
+   "status": "PASS",
+   "hits": []
+  }
+ ],
+ "exemptions": [],
+ "gate": "PASS",
+ "failed": []
+}

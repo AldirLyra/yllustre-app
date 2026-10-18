@@ -1,0 +1,12 @@
+import {spawn} from 'node:child_process';
+import path from 'node:path';
+import fs from 'node:fs';
+import ffmpeg from 'ffmpeg-static';
+const native=path.resolve('node_modules/@remotion/compositor-win32-x64-msvc');
+const bin=path.dirname(ffmpeg);
+const env={...process.env,Path:bin+path.delimiter+native+path.delimiter+process.env.Path,PYTHONIOENCODING:'utf-8'};
+const python='C:/Users/aldir/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe';
+const child=spawn(python,['references/motionmaxxing/scripts/look.py','../entregas/Yllustre-Video-V4.mp4','--out','review-v4/look','--expect','45','--expect-audio','--strict'],{env,stdio:['ignore','pipe','pipe']});
+let out='';child.stdout.on('data',d=>{out+=d;process.stdout.write(d)});child.stderr.on('data',d=>{out+=d;process.stderr.write(d)});
+const code=await new Promise(r=>child.on('exit',r));
+fs.writeFileSync('review-v4/motionmaxxing-report.txt',out);process.exitCode=code;

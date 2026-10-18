@@ -1,0 +1,30 @@
+{
+  "file": "C:\\Users\\aldir\\OneDrive\\Documentos\\yllustre-app\\entregas\\Yllustre-Video-V4.mp4",
+  "fullPlayback": {
+    "duration": 45.013,
+    "currentTimeAtEnd": 45.013,
+    "ended": true,
+    "rate": 1,
+    "error": null
+  },
+  "transitionPlayback": {
+    "cutsSeconds": [
+      5,
+      10,
+      15,
+      21,
+      27,
+      33,
+      39,
+      43.7
+    ],
+    "windowSeconds": 2,
+    "rate": 0.5,
+    "method": "Native HTML video; each transition window replayed for at least one full cycle; screenshots sampled."
+  },
+  "limitations": [
+    "Screen captures sample playback and do not observe every frame.",
+    "Audio verified with meters; not a human listening review."
+  ],
+  "sha256": "8c6f5a787950dbe907d56e5a85c839e0213322898e00497b50b4ee2ca72d0740"
+}

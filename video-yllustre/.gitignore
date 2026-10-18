@@ -1,0 +1,10 @@
+node_modules/
+build/
+build-v2/
+public/assets/
+*.log
+build-v3/
+build-lint-v3/
+references/motionmaxxing/.git/
+build-v4/
+build-lint-v4/

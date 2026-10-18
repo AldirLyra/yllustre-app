@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "threshold": {
+    "minimumDuration": 0.03,
+    "pixel": 0.08,
+    "picture": 0.99
+  },
+  "segments": [],
+  "limit": "Checks nearly black frames; does not prove visual continuity or perceptual quality."
+}
