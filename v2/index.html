@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Yllustre Agência">
+<meta property="og:url" content="https://yllustreagencia.com.br/v2/">
+<meta property="og:title" content="Yllustre Agência">
+<title>Yllustre Agência | Storymaker, vídeo, filme, social media e design</title>
+<meta name="theme-color" content="#090909">
+<meta name="description" content="Storymaker, videomaker, filmmaker, social media, design e landing pages. Conteúdo vivo. Memórias reais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","name":"Yllustre Agência","url":"https://yllustreagencia.com.br","slogan":"Conteúdo vivo. Memórias reais.","sameAs":["https://www.instagram.com/yllustre_agencia/"],"contactPoint":{"@type":"ContactPoint","telephone":"+55-63-99241-1073","contactType":"sales","availableLanguage":"Portuguese"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Quanto custa?","acceptedAnswer":{"@type":"Answer","text":"Cada projeto tem orçamento personalizado. Conte pelo WhatsApp o que você precisa e montamos uma proposta sob medida."}},
+{"@type":"Question","name":"Os stories são publicados durante o evento?","acceptedAnswer":{"@type":"Answer","text":"Sim. O storymaker acompanha o evento e publica bastidores e momentos-chave em tempo real."}},
+{"@type":"Question","name":"Vocês atendem profissionais da saúde e empresas?","acceptedAnswer":{"@type":"Answer","text":"Sim. Cuidamos do posicionamento de médicos, dentistas, clínicas, empresas e marcas pessoais, com social media, vídeo, design e landing pages."}},
+{"@type":"Question","name":"A mesma equipe grava e cuida do Instagram?","acceptedAnswer":{"@type":"Answer","text":"Sim. Captação, edição, design e social media ficam com a equipe da Yllustre, então tudo sai com a mesma linguagem."}},
+{"@type":"Question","name":"Como faço para contratar?","acceptedAnswer":{"@type":"Answer","text":"Chame no WhatsApp, conte a data ou o objetivo e a equipe responde com os próximos passos."}}
+]}]}
+</script>
+<style>
+/* Layout: o site é uma câmera. Abertura = visor ao vivo (REC, timecode 24p, foco que puxa na rolagem).
+   Cenas presas à rolagem: o quadro muda de formato (story, vídeo, filme) e o Instagram se monta nas 4 etapas.
+   Depois: jornada do cliente em trilha, seletor de modos, serviços, créditos finais, dúvidas e a claquete.
+   Faixas pretas e amarelas, como no site atual. */
+:root{
+  --y:#ffe100;          /* amarelo Yllustre */
+  --k:#090909;          /* preto Yllustre */
+  --ink:#151515;        /* superfície escura */
+  --w:#fffdf4;          /* marfim Yllustre */
+  --accent:#ffe100;
+  --accent2:#fff3a0;
+  --f-display:"Archivo","Arial Narrow",Arial,Helvetica,sans-serif;
+  --f-serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --header:64px;
+  --wrap:1240px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--k);color:var(--w);font-family:var(--f-display);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--k)}
+main{overflow-x:clip}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3,h4,p,figure,ol,ul{margin:0}
+:focus-visible{outline:2px solid var(--y);outline-offset:3px;border-radius:6px}
+.band-y :focus-visible{outline-color:var(--k)}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(36px,env(safe-area-inset-left,0px));padding-right:max(36px,env(safe-area-inset-right,0px))}}
+
+.band-k{background:var(--k);color:var(--w);--mute:rgba(255,253,244,.64);--line:rgba(255,253,244,.16);--em:var(--y);--soft:rgba(255,253,244,.07)}
+.band-y{background:var(--y);color:var(--k);--mute:rgba(9,9,9,.7);--line:rgba(9,9,9,.2);--em:var(--k);--soft:rgba(9,9,9,.07)}
+
+.h-xl,.h-l,.h-m{font-family:var(--f-display);font-weight:800;letter-spacing:-.035em;line-height:.95;text-wrap:balance;font-variation-settings:"wdth" 78}
+.h-xl{font-size:clamp(2.75rem,1rem + 8.4vw,8.6rem)}
+.h-l{font-size:clamp(2.1rem,1rem + 4.6vw,5.2rem)}
+.h-m{font-size:clamp(1.5rem,1rem + 2vw,2.6rem);line-height:1}
+em{font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--em);padding-right:.04em}
+.kicker{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--em);flex:none}
+.lede{font-size:clamp(1.02rem,.95rem + .35vw,1.22rem);line-height:1.5;color:var(--mute);max-width:52ch}
+.ex{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+section.pad{padding-block:clamp(72px,10vw,140px)}
+.shead{display:grid;gap:16px}
+
+/* Botões (alvo de toque >= 44px) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:800;font-size:.98rem;text-decoration:none;border:2px solid transparent;transition:transform .25s cubic-bezier(.2,.8,.2,1),background-color .25s,color .25s,border-color .25s;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn .ar{display:inline-block;transition:transform .25s}
+.btn-y{background:var(--y);color:var(--k)}
+.btn-k{background:var(--k);color:var(--w)}
+.btn-o{border-color:currentColor;background:transparent}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+@media (hover:hover){
+  .btn:hover{transform:translateY(-2px)}
+  .btn:hover .ar{transform:translate(3px,-3px)}
+  .band-k .btn-o:hover{background:var(--w);color:var(--k);border-color:var(--w)}
+  .band-y .btn-o:hover{background:var(--k);color:var(--y);border-color:var(--k)}
+}
+
+/* ============ CABEÇALHO (prefixo tnav) ============ */
+.tnav{position:-webkit-sticky;position:sticky;top:env(safe-area-inset-top,0px);z-index:80;height:var(--header);background:rgba(9,9,9,.88);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(255,253,244,.12)}
+.tnav-in{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.tnav-logo{display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-weight:900;letter-spacing:.3em;font-size:.95rem;font-variation-settings:"wdth" 110}
+.tnav-logo b{width:10px;height:10px;border-radius:50%;background:var(--y);box-shadow:0 0 0 4px rgba(255,225,0,.18)}
+.tnav-links{display:flex;gap:26px;font-size:.92rem;color:rgba(255,253,244,.64)}
+.tnav-links a{text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;min-height:44px}
+.tnav-cta{min-height:42px!important;padding:0 18px!important;font-size:.86rem!important}
+.tnav-burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;place-items:center;-webkit-tap-highlight-color:transparent}
+.tnav-burger i{display:block;width:22px;height:2px;background:var(--w);position:relative;transition:transform .3s,background .3s}
+.tnav-burger i::before,.tnav-burger i::after{content:"";position:absolute;left:0;width:22px;height:2px;background:var(--w);transition:transform .3s}
+.tnav-burger i::before{top:-7px}.tnav-burger i::after{top:7px}
+.tnav-open .tnav-burger i{background:transparent}
+.tnav-open .tnav-burger i::before{transform:translateY(7px) rotate(45deg)}
+.tnav-open .tnav-burger i::after{transform:translateY(-7px) rotate(-45deg)}
+.tnav-dd{position:fixed;z-index:79;inset:calc(var(--header) + env(safe-area-inset-top,0px)) 0 0;background:var(--k);padding:28px max(16px,env(safe-area-inset-right,0px)) max(28px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:6px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .3s,transform .3s,visibility 0s .3s;overflow-y:auto}
+.tnav-open .tnav-dd{opacity:1;transform:none;visibility:visible;transition:opacity .3s,transform .3s}
+.tnav-dd a.l{display:flex;align-items:center;min-height:56px;border-bottom:1px solid rgba(255,253,244,.12);text-decoration:none;font-weight:800;font-size:1.6rem;letter-spacing:-.02em;font-variation-settings:"wdth" 80}
+.tnav-dd .btn{margin-top:18px;align-self:flex-start}
+@media (hover:hover){.tnav-links a:hover{color:var(--w)}}
+@media (max-width:900px){.tnav-links,.tnav-cta{display:none!important}.tnav-burger{display:grid}}
+@media (min-width:901px){.tnav-dd{display:none}}
+
+/* ============ ABERTURA / VISOR ============ */
+.sx-hero{position:relative;overflow:hidden;isolation:isolate}
+.sx-hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.sx-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 90% at 20% 60%,rgba(9,9,9,.15),rgba(9,9,9,.82) 75%),linear-gradient(180deg,rgba(9,9,9,.2),rgba(9,9,9,.9))}
+.vf{position:relative;margin-block:clamp(14px,2.4vw,28px);padding-block:clamp(56px,7vw,96px) clamp(84px,9vw,120px)}
+.vf-c{position:absolute;inset:0;pointer-events:none}
+.vf-c i{position:absolute;width:clamp(18px,3vw,34px);height:clamp(18px,3vw,34px);border:0 solid rgba(255,253,244,.85)}
+.vf-c i:nth-child(1){top:0;left:0;border-top-width:2px;border-left-width:2px}
+.vf-c i:nth-child(2){top:0;right:0;border-top-width:2px;border-right-width:2px}
+.vf-c i:nth-child(3){bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
+.vf-c i:nth-child(4){bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+.hud{position:absolute;left:clamp(14px,2.4vw,28px);right:clamp(14px,2.4vw,28px);display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--f-mono);font-size:clamp(.62rem,.58rem + .2vw,.76rem);letter-spacing:.08em;pointer-events:none}
+.hud-t{top:clamp(14px,2vw,22px)}
+.hud-b{bottom:clamp(14px,2vw,22px);align-items:flex-end}
+.rec{display:flex;align-items:center;gap:8px;font-weight:700}
+.rec i{width:9px;height:9px;border-radius:50%;background:#ff3b30;animation:blink 1s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.tc{font-variant-numeric:tabular-nums;color:var(--y)}
+.specs{display:flex;gap:14px;opacity:.85}
+@media (max-width:560px){.specs .opt{display:none}}
+.batt{display:inline-block;width:24px;height:11px;border:1.5px solid currentColor;border-radius:2px;position:relative;vertical-align:-1px}
+.batt::before{content:"";position:absolute;inset:1.5px;right:5px;background:currentColor}
+.batt::after{content:"";position:absolute;right:-4px;top:2.5px;width:2px;height:4px;background:currentColor}
+.focus{flex:1;max-width:340px;display:grid;gap:6px}
+.focus-scale{position:relative;display:flex;justify-content:space-between;border-top:1px solid rgba(255,253,244,.5);padding-top:6px;font-variant-numeric:tabular-nums;opacity:.85}
+.focus-scale b{position:absolute;top:-6px;left:calc(var(--f,0) * 100%);width:2px;height:11px;background:var(--y);transform:translateX(-1px)}
+.meters{display:flex;gap:4px;align-items:flex-end;height:26px}
+.meters span{width:5px;height:100%;background:linear-gradient(to top,var(--w) 0 60%,var(--y) 60% 85%,#ff3b30 85%);transform-origin:bottom;animation:vu 1.1s ease-in-out infinite alternate}
+.meters span:nth-child(2){animation-duration:.8s;animation-delay:-.3s}
+@keyframes vu{0%{transform:scaleY(.25)}35%{transform:scaleY(.7)}60%{transform:scaleY(.45)}100%{transform:scaleY(.9)}}
+.hero-in{position:relative;display:grid;gap:26px;padding-inline:clamp(4px,3vw,48px)}
+.sx-hero h1{max-width:11ch}
+.sx-hero .lede{color:rgba(255,253,244,.78);max-width:34ch}
+.segs{display:flex;flex-wrap:wrap;gap:8px}
+.segs span{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border:1px solid rgba(255,253,244,.16);border-radius:999px;color:rgba(255,253,244,.78);background:rgba(9,9,9,.35)}
+.reticle{position:absolute;right:clamp(16px,9vw,140px);top:50%;width:clamp(60px,9vw,120px);aspect-ratio:1;transform:translateY(-50%);pointer-events:none;opacity:.8}
+.reticle::before,.reticle::after{content:"";position:absolute;background:rgba(255,253,244,.7)}
+.reticle::before{left:50%;top:22%;bottom:22%;width:1px}
+.reticle::after{top:50%;left:22%;right:22%;height:1px}
+.reticle i{position:absolute;inset:0;border:1px solid rgba(255,225,0,.9);border-radius:50%;transform:scale(calc(1.6 - var(--f,0) * .6));opacity:calc(.35 + var(--f,0) * .65)}
+@media (max-width:760px){.reticle{display:none}}
+
+/* ============ FAIXA ============ */
+.strip{overflow:hidden;padding-block:clamp(26px,4vw,44px)}
+.strip-in{transform:rotate(-2.2deg);display:grid;gap:6px}
+.row{display:flex;width:max-content;animation:roll 40s linear infinite}
+.row.rev{animation-direction:reverse;animation-duration:46s}
+.row span{display:flex;align-items:center;gap:clamp(18px,3vw,36px);padding-right:clamp(18px,3vw,36px);font-weight:900;font-size:clamp(1.9rem,1rem + 4vw,4.4rem);letter-spacing:-.03em;line-height:1.05;text-transform:uppercase;font-variation-settings:"wdth" 70;white-space:nowrap}
+.row span::after{content:"";width:.42em;height:.42em;background:var(--k);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
+.row.rev span{font-family:var(--f-serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.01em}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* ============ CENA PRESA À ROLAGEM (motor da skill) ============ */
+.scene{position:relative;height:calc(100vh + var(--n,4)*75vh);height:calc(100svh + var(--n,4)*75svh)}
+.scene .stick{position:-webkit-sticky;position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;padding-top:var(--header)}
+.scene .stick>.wrap{width:100%;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,80px);align-items:center}
+.scene .txt{display:grid;gap:22px;min-width:0}
+.caps{list-style:none;padding:0;display:grid;gap:16px}
+.caps li{opacity:.36;transition:opacity .5s,transform .5s}.caps li.on{opacity:1}
+.caps h3{font-size:clamp(1.25rem,1rem + .8vw,1.6rem);font-weight:800;letter-spacing:-.02em;font-variation-settings:"wdth" 85;line-height:1.1}
+.caps .tag{display:block;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;color:var(--em);margin-bottom:4px}
+.caps p{color:var(--mute);max-width:42ch;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s,opacity .4s}.caps li.on p{max-height:140px;opacity:1}
+.scene .bar{display:none}
+.scene .stage{position:relative;min-width:0}
+@media (max-width:860px){
+  .scene{height:calc(100svh + var(--n,4)*90svh)}
+  .scene .stick{align-items:stretch;padding-bottom:max(18px,env(safe-area-inset-bottom,0px))}
+  .scene .stick>.wrap{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto auto;gap:12px;height:100%;padding-top:14px}
+  .scene .txt{display:contents}.scene .shead{order:1;text-align:center;justify-items:center;gap:8px}.scene .stage{order:2;max-width:min(100%,46svh);justify-self:center;width:100%}
+  .scene .caps{order:3;gap:0}.scene .bar{order:4;display:flex;justify-content:center;gap:8px}
+  .scene .shead .lede{display:none}
+  .scene .shead .h-l{font-size:clamp(1.7rem,1.1rem + 3vw,2.4rem)}
+  .caps li{grid-area:1/1;opacity:0;transform:translateY(14px);text-align:center;pointer-events:none}
+  .caps li.on{opacity:1;transform:none;pointer-events:auto}.caps p{max-height:none;opacity:1;margin-inline:auto;font-size:.94rem}
+  .scene .bar i{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.18)}.scene .bar i.on{background:var(--accent)}
+  .band-y.scene .bar i{background:rgba(9,9,9,.18)}.band-y.scene .bar i.on{background:var(--k)}
+}
+@media (max-width:860px) and (max-height:700px){.scene .stick .stage{max-width:min(100%,33svh)}}
+.reduce .scene{height:auto}.reduce .scene .stick{position:relative;height:auto;padding-block:calc(var(--header) + 40px) 60px}.reduce .caps li{opacity:1;transform:none;grid-area:auto}.reduce .caps p{max-height:none;opacity:1}
+
+/* --- Cena 1: formatos (story → vídeo → filme) --- */
+#formatos .stage{height:min(72vh,640px);height:min(72svh,640px)}
+@media (max-width:860px){#formatos .stage{max-width:none;height:100%}}
+.reduce #formatos .stage{height:60vh}
+.guide{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px dashed rgba(255,253,244,.18);border-radius:6px;pointer-events:none}
+.guide span{position:absolute;top:-1.6em;left:0;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;color:rgba(255,253,244,.4)}
+@media (max-width:860px){.guide span{display:none}}
+.frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:240px;height:426px;border-radius:18px;overflow:hidden;background:#100e0a;box-shadow:0 0 0 1px rgba(255,253,244,.18),0 40px 90px -30px rgba(0,0,0,.9)}
+.frame canvas{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.frame .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,9,.55),transparent 25%,transparent 62%,rgba(9,9,9,.85))}
+.lay{position:absolute;inset:0;opacity:0}
+.lay-story .bars{position:absolute;top:12px;left:12px;right:12px;display:flex;gap:4px}
+.lay-story .bars span{flex:1;height:3px;border-radius:3px;background:rgba(255,253,244,.3);overflow:hidden}
+.lay-story .bars span:first-child::after{content:"";display:block;height:100%;background:var(--w)}
+.lay-story .bars span:nth-child(2)::after{content:"";display:block;height:100%;background:var(--w);transform-origin:left;animation:fill 5s linear infinite}
+@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.who{position:absolute;top:26px;left:12px;right:12px;display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;white-space:nowrap;overflow:hidden}
+.av{width:28px;height:28px;border-radius:50%;padding:2px;background:conic-gradient(var(--y),var(--w),var(--y));flex:none}
+.av::after{content:"Y";display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:var(--k);color:var(--y);font-weight:900;font-size:.74rem}
+.live{margin-left:auto;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.12em;background:var(--y);color:var(--k);padding:3px 7px;border-radius:4px;font-weight:700}
+.lay-story .cap{position:absolute;left:14px;right:14px;bottom:58px;font-family:var(--f-serif);font-size:clamp(1rem,calc(var(--fw,280) * .085px),1.6rem);line-height:1.05}
+.lay-story .cap i{color:var(--y)}
+.lay-story .send{position:absolute;left:12px;right:52px;bottom:14px;height:34px;border:1px solid rgba(255,253,244,.55);border-radius:999px;font-size:.72rem;display:flex;align-items:center;padding-left:14px;color:rgba(255,253,244,.8);white-space:nowrap;overflow:hidden}
+.hearts{position:absolute;right:12px;bottom:14px;width:30px;height:140px}
+.hearts svg{position:absolute;bottom:0;left:3px;width:24px;height:24px;fill:var(--y);opacity:0;animation:up 3.2s ease-out infinite}
+.hearts svg:nth-child(2){animation-delay:1.1s;left:0;fill:var(--w)}
+.hearts svg:nth-child(3){animation-delay:2.1s;left:6px}
+@keyframes up{0%{transform:translateY(0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translateY(-120px) translateX(-10px) scale(1.1);opacity:0}}
+.lay-video .vtc{position:absolute;top:12px;left:14px;font-family:var(--f-mono);font-size:.7rem;color:var(--y);font-variant-numeric:tabular-nums}
+.lay-video .vspec{position:absolute;top:12px;right:14px;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;opacity:.8}
+.tl{position:absolute;left:12px;right:12px;bottom:12px;display:grid;gap:4px;padding:8px;border-radius:8px;background:rgba(9,9,9,.72)}
+.trk{display:flex;gap:3px;height:12px}
+.trk i{display:block;border-radius:2px;background:var(--y)}
+.trk.b i{background:var(--w);opacity:.8}
+.trk.c{height:8px}
+.trk.c i{background:rgba(255,253,244,.35)}
+.ph{position:absolute;top:4px;bottom:4px;left:8px;width:2px;background:#ff3b30;animation:play 6s linear infinite}
+@keyframes play{from{left:8px}to{left:calc(100% - 10px)}}
+.lay-film .slate{position:absolute;top:12px;left:16px;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;opacity:.8}
+.lay-film .sub{position:absolute;left:0;right:0;bottom:14%;text-align:center;font-family:var(--f-serif);font-style:italic;font-size:clamp(1rem,.8rem + 1vw,1.6rem);color:var(--w);text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.grain{position:absolute;inset:-50%;opacity:.12;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-8%,4%)}50%{transform:translate(5%,-6%)}75%{transform:translate(-3%,7%)}100%{transform:translate(0,0)}}
+
+/* --- Cena 2: processo (o Instagram se monta) --- */
+#processo .stage{display:grid;place-items:center}
+@media (max-width:860px){#processo .stage{max-width:none;height:100%;min-height:0}}
+.phone{--pw:min(300px,62vw);width:var(--pw);aspect-ratio:9/18.8;font-size:calc(var(--pw) / 22);background:var(--k);border-radius:2.6em;padding:.6em;box-shadow:0 30px 70px -25px rgba(9,9,9,.6),inset 0 0 0 1px rgba(255,253,244,.15);position:relative}
+@media (max-width:860px){.phone{--pw:min(300px,62vw,27vh)}@supports (height:1svh){.phone{--pw:min(300px,62vw,27svh)}}}
+@media (max-width:860px) and (max-height:700px){.phone{--pw:min(300px,62vw,21vh)}@supports (height:1svh){.phone{--pw:min(300px,62vw,21svh)}}}
+.scr{position:relative;height:100%;border-radius:2.1em;background:var(--ink);overflow:hidden;color:var(--w);padding:2.6em 1.1em 1em;display:grid;align-content:start;gap:.9em}
+.scr::before{content:"";position:absolute;top:.7em;left:50%;width:6.5em;height:1.5em;border-radius:1em;background:var(--k);transform:translateX(-50%)}
+.pf{display:flex;align-items:center;gap:1em}
+.pf .av{width:4.4em;height:4.4em;padding:.22em}
+.pf .av::after{font-size:1.4em}
+.pf .cnt{flex:1;display:flex;justify-content:space-around;text-align:center;font-size:.72em;color:rgba(255,253,244,.64)}
+.pf .cnt b{display:block;height:.9em;width:2.2em;margin:0 auto .35em;border-radius:.3em;background:rgba(255,253,244,.85)}
+.handle{font-weight:800;font-size:.95em}
+.handle small{display:block;font-weight:400;font-size:.8em;color:rgba(255,253,244,.64)}
+.bio{display:grid;gap:.35em}
+.bio i{display:block;height:.55em;border-radius:.3em;background:rgba(255,253,244,.6);transform-origin:left;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.bio i:nth-child(2){width:80%;transition-delay:.1s}
+.bio i:nth-child(3){width:55%;transition-delay:.2s;background:var(--y)}
+.follow{height:2.1em;border-radius:.6em;background:var(--y);color:var(--k);display:grid;place-items:center;font-size:.8em;font-weight:800;transition:background .4s,color .4s}
+.follow .a{display:none}
+.hl{display:flex;gap:.8em}
+.hl span{display:grid;justify-items:center;gap:.25em;font-size:.6em;color:rgba(255,253,244,.64);transition:transform .5s cubic-bezier(.3,1.5,.5,1),opacity .4s}
+.hl span::before{content:"";width:3.4em;height:3.4em;border-radius:50%;border:.18em solid #3a3a3a;background:radial-gradient(circle,var(--y) 0 30%,#1f1f1f 32%)}
+.hl span:nth-child(2){transition-delay:.08s}.hl span:nth-child(3){transition-delay:.16s}
+.hl span:nth-child(2)::before{background:radial-gradient(circle,var(--w) 0 30%,#1f1f1f 32%)}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:.18em;margin-inline:-1.1em}
+.grid9 i{aspect-ratio:4/5;background:#222;position:relative;overflow:hidden}
+.grid9 i::after{content:"";position:absolute;inset:0;transition:opacity .4s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.grid9 i:nth-child(1)::after{background:var(--y)}
+.grid9 i:nth-child(2)::after{background:linear-gradient(135deg,#2c2c2c,#0e0e0e);box-shadow:inset 0 0 0 .9em #151515}
+.grid9 i:nth-child(3)::after{background:radial-gradient(circle at 50% 45%,var(--y) 0 22%,var(--k) 23%)}
+.grid9 i:nth-child(4)::after{background:repeating-linear-gradient(0deg,var(--w) 0 .25em,#151515 .25em 1em)}
+.grid9 i:nth-child(5)::after{background:var(--w)}
+.grid9 i:nth-child(6)::after{background:conic-gradient(from 200deg,var(--y),var(--k),var(--y))}
+.grid9 i:nth-child(7)::after{background:linear-gradient(180deg,var(--k) 55%,var(--y) 55%)}
+.grid9 i:nth-child(8)::after{background:radial-gradient(circle at 30% 30%,#444,#111)}
+.grid9 i:nth-child(9)::after{background:var(--y);clip-path:polygon(0 0,100% 0,100% 100%)}
+.grid9 i.reel::before{content:"";position:absolute;z-index:1;top:.4em;right:.4em;width:0;height:0;border-left:.55em solid var(--w);border-top:.35em solid transparent;border-bottom:.35em solid transparent}
+.notif{position:absolute;z-index:3;left:.6em;right:.6em;top:.6em;padding:.7em .8em;border-radius:1em;background:rgba(255,253,244,.96);color:var(--k);font-size:.7em;display:flex;gap:.6em;align-items:center;transition:transform .6s cubic-bezier(.2,.9,.2,1.2);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.notif b{display:block}
+.notif .ic{flex:none;width:2.4em;height:2.4em;border-radius:.7em;background:var(--k);display:grid;place-items:center;color:var(--y);font-weight:900}
+/* estado por etapa: sem JS, mostra o perfil pronto */
+#processo[data-s="0"] .hl span{transform:scale(0);opacity:0}
+#processo[data-s="0"] .grid9 i::after,#processo[data-s="1"] .grid9 i::after,#processo[data-s="2"] .grid9 i:not(.on)::after{opacity:0;transform:scale(1.2)}
+#processo[data-s="0"] .grid9 i.reel::before,#processo[data-s="1"] .grid9 i.reel::before{opacity:0}
+#processo[data-s="0"] .follow,#processo[data-s="1"] .follow,#processo[data-s="2"] .follow{background:#2a2a2a;color:var(--w)}
+#processo[data-s="0"] .follow .a,#processo[data-s="1"] .follow .a,#processo[data-s="2"] .follow .a{display:inline}
+#processo[data-s="0"] .follow .b,#processo[data-s="1"] .follow .b,#processo[data-s="2"] .follow .b{display:none}
+#processo[data-s] .notif{transform:translateY(-160%)}
+#processo[data-s="3"] .notif{transform:none}
+
+/* ============ JORNADA DO CLIENTE (trilha) ============ */
+.jhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 40px}
+.track{position:relative;margin-top:clamp(40px,6vw,72px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;padding-top:52px}
+.track .rail{position:absolute;left:10%;right:10%;top:20px;height:2px;background:rgba(255,255,255,.12)}
+.track .rail i{position:absolute;inset:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(var(--t,0));transform-origin:0 0}
+.track .dot{position:absolute;left:calc(10% + var(--t,0)*80%);top:21px;width:18px;height:18px;margin:-9px;border-radius:50%;background:var(--y);box-shadow:0 0 26px 6px rgba(255,225,0,.55);z-index:2}
+.stop{position:relative;display:grid;gap:10px;align-content:start;text-align:center;justify-items:center;min-width:0}
+.stop .num{position:absolute;top:-45px;left:50%;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:var(--k);border:2px solid rgba(255,253,244,.3);display:grid;place-items:center;font-family:var(--f-mono);font-size:.7rem;font-weight:700;color:rgba(255,253,244,.6);transition:background .4s,color .4s,border-color .4s;z-index:1}
+.stop.on .num{background:var(--y);color:var(--k);border-color:var(--y)}
+.stop h3{font-size:1.12rem;font-weight:800;letter-spacing:-.015em;line-height:1.15;font-variation-settings:"wdth" 88}
+.stop p{font-size:.92rem;color:var(--mute);max-width:26ch}
+.mini{width:100%;max-width:220px;aspect-ratio:4/3;border-radius:14px;background:var(--ink);box-shadow:inset 0 0 0 1px rgba(255,253,244,.1);position:relative;overflow:hidden;transition:box-shadow .5s,transform .5s cubic-bezier(.2,.8,.2,1);transform:scale(.96)}
+.stop.on .mini{box-shadow:inset 0 0 0 2px var(--y);transform:none}
+.mini .bub{position:absolute;left:12%;right:24%;top:20%;padding:8px 10px;border-radius:12px 12px 12px 4px;background:var(--w);color:var(--k);font-size:.64rem;font-weight:700;text-align:left;line-height:1.3}
+.mini .dots{position:absolute;right:12%;bottom:14%;display:flex;gap:3px;padding:7px 9px;border-radius:10px;background:var(--y)}
+.mini .dots i{width:5px;height:5px;border-radius:50%;background:var(--k);opacity:.4}
+.stop.on .mini .dots i{animation:dot 1s infinite}.stop.on .mini .dots i:nth-child(2){animation-delay:.15s}.stop.on .mini .dots i:nth-child(3){animation-delay:.3s}
+@keyframes dot{50%{transform:translateY(-3px);opacity:1}}
+.mini .note{position:absolute;inset:14% 18%;border-radius:8px;background:var(--w);padding:10px;display:grid;gap:7px;align-content:start}
+.mini .note span{display:flex;gap:6px;align-items:center;font-size:.58rem;font-weight:700;color:var(--k);text-align:left;white-space:nowrap}
+.mini .note span::before{content:"";width:10px;height:10px;border-radius:3px;border:1.5px solid var(--k);flex:none}
+.stop.on .mini .note span::before{background:var(--k);box-shadow:inset 0 0 0 2px var(--w)}
+.mini .doc{position:absolute;inset:12% 26%;border-radius:6px;background:var(--w);overflow:hidden;display:grid;align-content:start;gap:5px;padding:0 0 8px}
+.mini .doc b{display:block;height:28%;min-height:18px;background:var(--y);margin-bottom:4px;position:relative}
+.mini .doc b::after{content:"Y";position:absolute;left:8px;top:50%;transform:translateY(-50%);font-weight:900;font-size:.7rem;color:var(--k)}
+.mini .doc i{display:block;height:4px;margin-inline:8px;border-radius:2px;background:#cfcabb}
+.mini .doc i:nth-of-type(2){width:60%}
+.mini .vfm{position:absolute;inset:16%;background:radial-gradient(60% 70% at 70% 30%,rgba(255,225,0,.45),transparent 60%),radial-gradient(50% 60% at 25% 75%,rgba(255,253,244,.25),transparent 60%),#0d0d0d}
+.mini .vfm::before,.mini .vfm::after{content:"";position:absolute;width:14px;height:14px;border:0 solid var(--w)}
+.mini .vfm::before{top:6px;left:6px;border-top-width:2px;border-left-width:2px}
+.mini .vfm::after{bottom:6px;right:6px;border-bottom-width:2px;border-right-width:2px}
+.mini .vfm span{position:absolute;top:8px;right:8px;display:flex;gap:4px;align-items:center;font-family:var(--f-mono);font-size:.52rem;font-weight:700}
+.mini .vfm span::before{content:"";width:6px;height:6px;border-radius:50%;background:#ff3b30}
+.stop.on .mini .vfm span::before{animation:blink 1s steps(2,start) infinite}
+.mini .ph2{position:absolute;left:50%;top:10%;bottom:-20%;width:42%;transform:translateX(-50%);border-radius:12px;background:#0d0d0d;box-shadow:inset 0 0 0 2px #2a2a2a;padding:10px 7px}
+.mini .ph2 .sb{display:flex;gap:2px}
+.mini .ph2 .sb i{flex:1;height:2px;background:rgba(255,253,244,.3)}
+.stop.on .mini .ph2 .sb i{background:var(--w)}
+.mini .ph2 svg{position:absolute;left:50%;top:44%;width:34%;transform:translate(-50%,-50%) scale(.8);fill:var(--y);transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.stop.on .mini .ph2 svg{transform:translate(-50%,-50%) scale(1.15)}
+@media (max-width:760px){
+  .track{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:0;padding-left:48px}
+  .track .rail{left:15px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .track .rail i{transform:scaleY(var(--t,0));background:linear-gradient(180deg,var(--accent),var(--accent2))}
+  .track .dot{left:15px;top:calc(var(--t,0)*100%);margin:-9px 0 0 -8px}
+  .stop{grid-template-columns:minmax(0,118px) minmax(0,1fr);text-align:left;justify-items:start;align-items:center;column-gap:14px;row-gap:4px}
+  .stop .num{top:50%;left:-47px;margin:-14px 0 0}
+  .stop .mini{grid-row:span 2;max-width:none}
+  .stop h3{align-self:end;font-size:1.02rem}.stop p{align-self:start;font-size:.86rem}
+  .mini .bub{left:8%;right:8%;top:12%;font-size:.5rem;padding:6px 7px}.mini .dots{bottom:10%;right:8%}
+  .mini .note{inset:10% 8%;padding:7px;gap:5px}.mini .note span{font-size:.5rem}
+}
+
+/* ============ SELETOR DE MODOS ============ */
+.modes-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,90px);align-items:center;margin-top:clamp(36px,5vw,64px)}
+@media (max-width:860px){.modes-g{grid-template-columns:minmax(0,1fr)}}
+.dial-w{position:relative;width:min(100%,460px);aspect-ratio:1;justify-self:center;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.dial-w::before{content:"";position:absolute;left:50%;top:-4px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:14px solid var(--k);transform:translateX(-50%);z-index:3}
+.dial{position:absolute;inset:4%;border-radius:50%;transform:rotate(var(--r,0deg));transition:transform .9s cubic-bezier(.2,.9,.2,1);background:radial-gradient(circle at 50% 50%,#1d1d1d 0 54%,transparent 54.4%),repeating-conic-gradient(from 0deg,#2b2b2b 0 1.6deg,#0f0f0f 1.6deg 4deg);box-shadow:inset 0 0 0 1px rgba(255,253,244,.12),0 30px 80px -30px rgba(9,9,9,.7)}
+.dial::after{content:"";position:absolute;inset:23%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2a2a2a,#0c0c0c 70%);box-shadow:inset 0 0 0 1px rgba(255,253,244,.08)}
+.dial button{position:absolute;left:50%;top:50%;z-index:2;width:42%;height:46px;margin:-23px 0 0 -21%;border:0;background:none;cursor:pointer;font-family:var(--f-mono);font-size:clamp(.62rem,.5rem + .4vw,.8rem);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,253,244,.55);transform:rotate(var(--a)) translateY(-118%);transition:color .3s;-webkit-tap-highlight-color:transparent}
+.dial button.on{color:var(--y);font-weight:700}
+.dial-c{position:absolute;inset:30%;border-radius:50%;display:grid;place-items:center;text-align:center;z-index:2;pointer-events:none}
+.dial-c b{display:block;font-family:var(--f-serif);font-style:italic;font-weight:400;font-size:clamp(2.6rem,2rem + 3vw,4.6rem);line-height:1;color:var(--y)}
+.dial-c span{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.2em;color:rgba(255,253,244,.6)}
+.mode-p{display:grid;gap:16px;min-width:0}
+.mode-p .idx{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.14em;color:var(--mute)}
+.mode-p .txt{color:var(--mute);font-size:1.08rem;max-width:44ch;min-height:4.8em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:.84rem;font-weight:700;padding:7px 13px;border-radius:999px;background:var(--soft)}
+.mode-ctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.rnd{width:52px;height:52px;border-radius:50%;border:2px solid var(--line);background:none;cursor:pointer;display:grid;place-items:center;font-size:1.2rem;transition:border-color .2s}
+@media (hover:hover){.rnd:hover{border-color:currentColor}}
+
+/* ============ SERVIÇOS ============ */
+.svc-g{margin-top:clamp(36px,5vw,64px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:1000px){.svc-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.svc-g{grid-template-columns:minmax(0,1fr)}}
+.svc{background:var(--ink);border-radius:22px;padding:18px;display:grid;gap:12px;grid-template-rows:auto auto auto 1fr auto;min-width:0;box-shadow:inset 0 0 0 1px rgba(255,253,244,.1)}
+.svc .mn{position:relative;aspect-ratio:16/10;border-radius:14px;background:var(--k);overflow:hidden}
+.svc .grp{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--y)}
+.svc h3{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;font-variation-settings:"wdth" 82;line-height:1}
+.svc p{color:var(--mute);font-size:.96rem}
+.svc a.go{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:800;text-decoration:none;color:var(--y)}
+@media (hover:hover){.svc a.go:hover{text-decoration:underline;text-underline-offset:4px}}
+.mn-story .p{position:absolute;left:50%;top:12%;bottom:-30%;width:34%;transform:translateX(-50%);border-radius:12px;background:#1a1a1a;box-shadow:inset 0 0 0 2px #2c2c2c;padding:8px 6px}
+.mn-story .p .sb{display:flex;gap:2px}
+.mn-story .p .sb i{flex:1;height:2px;background:rgba(255,253,244,.25);overflow:hidden}
+.mn-story .p .sb i::after{content:"";display:block;height:100%;background:var(--w);transform-origin:left}
+.play .mn-story .p .sb i::after{animation:fill 6s linear infinite;animation-delay:calc(var(--k) * 2s - 6s)}
+.mn-story .p .c{position:absolute;left:8px;right:8px;bottom:36%;height:6px;border-radius:3px;background:var(--y);box-shadow:0 -10px 0 rgba(255,253,244,.5)}
+.mn-video{display:grid;align-content:end;padding:12px;gap:4px;background:radial-gradient(60% 80% at 70% 30%,rgba(255,225,0,.35),transparent 60%),var(--k)}
+.mn-video .t{display:flex;gap:3px;height:9px}.mn-video .t i{border-radius:2px;background:var(--y)}.mn-video .t.b i{background:rgba(255,253,244,.7)}
+.mn-video .pl{position:absolute;bottom:8px;top:58%;left:14px;width:2px;background:#ff3b30}
+.play .mn-video .pl{animation:play2 5s linear infinite}
+@keyframes play2{from{left:14px}to{left:calc(100% - 16px)}}
+.mn-film::before,.mn-film::after{content:"";position:absolute;left:0;right:0;height:16%;background:#000;z-index:1}
+.mn-film::before{top:0}.mn-film::after{bottom:0}
+.mn-film .sc{position:absolute;inset:0;background:radial-gradient(40% 60% at 30% 50%,rgba(255,253,244,.25),transparent 60%),radial-gradient(40% 60% at 75% 45%,rgba(255,225,0,.35),transparent 60%),#0d0d0d}
+.play .mn-film .sc{animation:pan 8s ease-in-out infinite alternate}
+@keyframes pan{to{transform:scale(1.15) translateX(-4%)}}
+.mn-film .st{position:absolute;z-index:2;left:0;right:0;bottom:22%;text-align:center;font-family:var(--f-serif);font-style:italic;font-size:.95rem}
+.mn-social{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;padding:10px}
+.mn-social i{background:#1f1f1f;border-radius:3px}
+.mn-social i:nth-child(3n+1){background:var(--y)}.mn-social i:nth-child(5n+2){background:var(--w)}
+.play .mn-social i{animation:blinkt 4s infinite;animation-delay:calc(var(--k) * .2s)}
+@keyframes blinkt{0%,100%{opacity:1}50%{opacity:.25}}
+.mn-design svg{position:absolute;inset:0;width:100%;height:100%}
+.mn-design .g{fill:none;stroke:rgba(255,253,244,.25);stroke-width:1;stroke-dasharray:3 4}
+.mn-design .ym{fill:none;stroke:var(--y);stroke-width:14;stroke-linecap:square;stroke-dasharray:1;stroke-dashoffset:0}
+.play .mn-design .ym{animation:draw 5s cubic-bezier(.6,0,.2,1) infinite}
+@keyframes draw{0%,8%{stroke-dashoffset:1}45%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}
+.mn-lp{padding:10px}
+.mn-lp .br{height:100%;border-radius:8px;background:var(--w);color:var(--k);overflow:hidden;position:relative}
+.mn-lp .bb{display:flex;gap:4px;padding:6px 8px;background:#e9e6da}.mn-lp .bb i{width:6px;height:6px;border-radius:50%;background:#c9c5b6}
+.mn-lp .bc{padding:9% 9%;display:grid;gap:6px;justify-items:start}
+.mn-lp .bc i{display:block;height:7px;border-radius:3px;background:#d6d2c4;width:70%}
+.mn-lp .bc i.t{height:12px;width:85%;background:var(--k)}
+.mn-lp .cta{margin-top:4px;padding:5px 10px;border-radius:999px;background:var(--y);font-weight:800;font-size:.6rem}
+.mn-lp .cur{position:absolute;width:14px;height:14px;left:80%;top:86%}
+.mn-lp .toast{position:absolute;right:6px;bottom:6px;padding:5px 8px;border-radius:7px;background:var(--k);color:var(--w);font-size:.55rem;font-weight:700;opacity:0}
+.play .mn-lp .cur{animation:cur 5s cubic-bezier(.5,0,.2,1) infinite}
+.play .mn-lp .cta{animation:press 5s infinite}
+.play .mn-lp .toast{animation:toast 5s infinite}
+@keyframes cur{0%,10%{left:82%;top:92%}45%,70%{left:16%;top:66%}100%{left:82%;top:92%}}
+@keyframes press{0%,46%{transform:scale(1)}50%{transform:scale(.9)}55%,100%{transform:scale(1)}}
+@keyframes toast{0%,52%{opacity:0;transform:translateY(6px)}58%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+
+/* ============ CRÉDITOS ============ */
+.credits{text-align:center}
+.credits .shead{justify-items:center}
+.roll{display:grid;gap:clamp(8px,1.4vw,16px);margin-top:clamp(36px,5vw,64px);will-change:transform}
+.roll .n{font-weight:800;font-size:clamp(1.8rem,1rem + 4.2vw,4.4rem);letter-spacing:-.03em;line-height:1;font-variation-settings:"wdth" 75}
+.roll .n:nth-child(even){font-family:var(--f-serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.cred-end{margin-top:clamp(44px,6vw,72px);display:grid;gap:10px;justify-items:center}
+.cred-end .ex{font-size:.72rem;letter-spacing:.2em}
+.cred-end p{font-family:var(--f-serif);font-style:italic;font-size:clamp(1.4rem,1rem + 1.6vw,2.2rem)}
+
+/* ============ DÚVIDAS ============ */
+.faq-g{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,80px);align-items:start}
+@media (max-width:860px){.faq-g{grid-template-columns:minmax(0,1fr)}}
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:800;font-size:clamp(1.05rem,1rem + .4vw,1.3rem);letter-spacing:-.01em;padding-block:12px;-webkit-tap-highlight-color:transparent}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:28px;height:28px;border-radius:50%;background:linear-gradient(var(--y),var(--y)) center/12px 2px no-repeat,linear-gradient(var(--y),var(--y)) center/2px 12px no-repeat;box-shadow:inset 0 0 0 1.5px var(--line);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--mute);padding-bottom:20px;max-width:60ch}
+
+/* ============ CONTATO / CLAQUETE ============ */
+.final-g{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(36px,6vw,90px);align-items:center}
+@media (max-width:860px){.final-g{grid-template-columns:minmax(0,1fr)}}
+.subj{border:0;margin:26px 0 0;padding:0;min-width:0}
+.subj legend{padding:0;margin-bottom:12px;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.subj .opts{display:flex;flex-wrap:wrap;gap:8px}
+.subj input{position:absolute;opacity:0;pointer-events:none}
+.subj label{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:2px solid var(--line);font-weight:700;font-size:.92rem;cursor:pointer;transition:background .2s,color .2s,border-color .2s;-webkit-tap-highlight-color:transparent}
+.subj input:checked+label{background:var(--k);color:var(--y);border-color:var(--k)}
+.subj input:focus-visible+label{outline:2px solid var(--k);outline-offset:3px}
+.final .ctas{margin-top:26px}
+.wa{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:20px;font-family:var(--f-mono);font-size:.86rem;color:var(--mute)}
+.wa output{color:var(--k);font-weight:700;-webkit-user-select:all;user-select:all;font-variant-numeric:tabular-nums}
+.copy{min-height:44px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:1.5px solid var(--k);border-radius:999px;padding:0 16px;cursor:pointer}
+.clap{width:min(100%,380px);justify-self:center;cursor:pointer;border:0;background:none;padding:0;-webkit-tap-highlight-color:transparent}
+.clap svg{width:100%;height:auto;display:block;overflow:visible}
+.clap .arm{transform-origin:22px 78px;transform:rotate(-16deg)}
+.clap.go .arm{animation:clapA .7s cubic-bezier(.5,0,.3,1)}
+@keyframes clapA{0%{transform:rotate(-16deg)}45%{transform:rotate(0deg)}60%{transform:rotate(-3deg)}75%,100%{transform:rotate(-16deg)}}
+.clap text{font-family:var(--f-mono);fill:var(--w)}
+.clap .lbl{font-size:10px;letter-spacing:.14em;fill:rgba(255,253,244,.55)}
+.clap .val{font-size:17px;font-weight:700}
+.clap .valy{font-size:17px;font-weight:700;fill:var(--y)}
+
+footer{padding-block:44px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;color:rgba(255,253,244,.64);font-size:.9rem}
+footer nav{display:flex;flex-wrap:wrap;gap:4px 20px}
+footer nav a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+@media (hover:hover){footer nav a:hover{color:var(--w)}}
+footer .sl{font-family:var(--f-serif);font-style:italic;font-size:1.2rem;color:var(--w)}
+
+/* Entradas: já visíveis; só deslizam ao chegar */
+.rv{transition:transform .9s cubic-bezier(.2,.8,.2,1)}.js .rv.wait{transform:translate3d(0,46px,0)}
+
+.reduce .row,.reduce .rec i,.reduce .meters span,.reduce .hearts svg,.reduce .lay-story .bars span::after,.reduce .ph,.reduce .grain{animation:none!important}
+.reduce .dial{transition:none}
+</style>
+</head>
+<body>
+<header class="tnav" id="tnav">
+  <div class="wrap tnav-in">
+    <a class="tnav-logo" href="#inicio" aria-label="Yllustre, início"><b aria-hidden="true"></b>YLLUSTRE</a>
+    <nav class="tnav-links" aria-label="Principal">
+      <a href="#formatos">Formatos</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#modos">Para quem</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#clientes">Clientes</a>
+    </nav>
+    <a class="btn btn-y tnav-cta" href="https://wa.me/5563992411073?text=Ol%C3%A1%2C%20Yllustre!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento <span class="ar">↗</span></a>
+    <button class="tnav-burger" id="tnavBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="tnavDd"><i></i></button>
+  </div>
+</header>
+<nav class="tnav-dd" id="tnavDd" aria-label="Menu">
+  <a class="l" href="#formatos">Formatos</a>
+  <a class="l" href="#processo">Como funciona</a>
+  <a class="l" href="#modos">Para quem</a>
+  <a class="l" href="#servicos">Serviços</a>
+  <a class="l" href="#clientes">Clientes</a>
+  <a class="l" href="#duvidas">Dúvidas</a>
+  <a class="btn btn-y" href="https://wa.me/5563992411073?text=Ol%C3%A1%2C%20Yllustre!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Conversar no WhatsApp <span class="ar">↗</span></a>
+</nav>
+
+<main id="inicio">
+
+<!-- ============ ABERTURA ============ -->
+<section class="sx-hero band-k" id="hero">
+  <canvas id="bkHero" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="vf">
+      <div class="vf-c" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="hud hud-t" aria-hidden="true">
+        <span class="rec"><i></i>REC <span class="tc" id="tc">00:00:12:04</span></span>
+        <span class="specs"><span class="opt">ISO 800</span><span class="opt">1/50</span><span>f/1.8</span><span>4K · 24p</span><span class="batt"></span></span>
+      </div>
+      <div class="reticle" aria-hidden="true"><i></i></div>
+      <div class="hero-in">
+        <p class="kicker">Conteúdo vivo. Memórias reais.</p>
+        <h1 class="h-xl">Onde a criatividade <em>acontece.</em></h1>
+        <p class="lede">Transformamos ideias, marcas e momentos em histórias que as pessoas sentem, compartilham e lembram.</p>
+        <div class="ctas">
+          <a class="btn btn-y" href="https://wa.me/5563992411073?text=Ol%C3%A1%2C%20Yllustre!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Conversar no WhatsApp <span class="ar">↗</span></a>
+          <a class="btn btn-o" href="#processo">Ver como funciona <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="segs" aria-label="O que cobrimos"><span>Casamentos</span><span>Formaturas</span><span>Eventos</span><span>Saúde</span><span>Marcas</span></div>
+      </div>
+      <div class="hud hud-b" aria-hidden="true">
+        <div class="focus"><span>FOCO</span><div class="focus-scale" id="focusScale"><b></b><span>∞</span><span>10</span><span>5</span><span>3</span><span>2</span><span>1,5 m</span></div></div>
+        <div class="meters"><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAIXA ============ -->
+<div class="strip band-y" aria-hidden="true">
+  <div class="strip-in">
+    <div class="row"><span>Storymaker</span><span>Videomaker</span><span>Filmmaker</span><span>Conteúdo para marcas</span><span>Storymaker</span><span>Videomaker</span><span>Filmmaker</span><span>Conteúdo para marcas</span></div>
+    <div class="row rev"><span>presença do começo ao fim</span><span>social media</span><span>design</span><span>landing pages</span><span>presença do começo ao fim</span><span>social media</span><span>design</span><span>landing pages</span></div>
+  </div>
+</div>
+
+<!-- ============ CENA 1: FORMATOS ============ -->
+<section class="scene band-k" id="formatos" data-scene data-n="3" style="--n:3" aria-label="Formatos de captação">
+  <div class="stick"><div class="wrap">
+    <div class="txt">
+      <div class="shead">
+        <p class="kicker">Captar</p>
+        <h2 class="h-l">Um olhar, <em>três formatos.</em></h2>
+        <p class="lede">A mesma equipe planeja, capta e entrega no formato que a sua história pede.</p>
+      </div>
+      <ol class="caps">
+        <li class="on"><span class="tag">STORY · 9:16</span><h3>Storymaker</h3><p>Bastidores, momentos-chave e publicações em tempo real durante o evento.</p></li>
+        <li><span class="tag">VÍDEO · 16:9</span><h3>Videomaker</h3><p>Vídeos para campanhas, redes sociais, eventos corporativos e presença digital.</p></li>
+        <li><span class="tag">FILME · 2,39:1</span><h3>Filmmaker</h3><p>Filmes com narrativa e emoção para casamentos, formaturas e celebrações.</p></li>
+      </ol>
+      <div class="bar"></div>
+    </div>
+    <div class="stage" id="stage">
+      <div class="guide" data-a="0.5625"><span>9:16</span></div>
+      <div class="guide" data-a="1.7778"><span>16:9</span></div>
+      <div class="guide" data-a="2.39"><span>2,39:1</span></div>
+      <div class="frame" id="frame">
+        <canvas id="bkFrame" aria-hidden="true"></canvas>
+        <div class="shade"></div>
+        <div class="lay lay-story" style="opacity:1">
+          <div class="bars"><span></span><span></span><span></span></div>
+          <div class="who"><span class="av"></span>yllustre_agencia<span class="live">AO VIVO</span></div>
+          <p class="cap">Do primeiro olhar ao <i>último brinde.</i></p>
+          <div class="send">Enviar mensagem</div>
+          <div class="hearts" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+          </div>
+        </div>
+        <div class="lay lay-video">
+          <span class="vtc" id="vtc">00:00:41:12</span>
+          <span class="vspec">16:9 · 4K</span>
+          <div class="tl">
+            <div class="trk"><i style="flex:3"></i><i style="flex:2"></i><i style="flex:4"></i><i style="flex:1.5"></i><i style="flex:3"></i></div>
+            <div class="trk b"><i style="flex:5"></i><i style="flex:3"></i><i style="flex:4"></i></div>
+            <div class="trk c"><i style="flex:12"></i></div>
+            <span class="ph"></span>
+          </div>
+        </div>
+        <div class="lay lay-film">
+          <span class="slate">CENA 12 · TAKE 3</span>
+          <p class="sub">— Eu aceito.</p>
+          <div class="grain"></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ CENA 2: PROCESSO ============ -->
+<section class="scene band-y" id="processo" data-scene data-n="4" style="--n:4" aria-label="Como funciona o posicionamento">
+  <div class="stick"><div class="wrap">
+    <div class="txt">
+      <div class="shead">
+        <p class="kicker">Como funciona</p>
+        <h2 class="h-l">Posicionamento profissional e <em>digital.</em></h2>
+        <p class="lede">Cuidamos da produção e do posicionamento do seu Instagram para a marca aparecer com estratégia, consistência e personalidade.</p>
+      </div>
+      <ol class="caps">
+        <li class="on"><span class="tag">ETAPA 1</span><h3>A gente escuta</h3><p>Entendemos o que você procura e quem você quer alcançar.</p></li>
+        <li><span class="tag">ETAPA 2</span><h3>A gente planeja</h3><p>Alinhamos a sua ideia ao nosso conhecimento de conteúdo.</p></li>
+        <li><span class="tag">ETAPA 3</span><h3>A gente posiciona</h3><p>Direcionamos a comunicação para a sua profissão e o seu público.</p></li>
+        <li><span class="tag">RESULTADO</span><h3>Você conquista</h3><p>Presença, autoridade e conexão com as pessoas certas.</p></li>
+      </ol>
+      <div class="bar"></div>
+    </div>
+    <div class="stage">
+      <div class="phone" aria-label="Exemplo ilustrativo de perfil sendo montado">
+        <div class="scr">
+          <div class="notif"><span class="ic">✓</span><span><b>Nova mensagem</b>Olá! Quero agendar um horário.</span></div>
+          <div class="pf"><span class="av"></span><div class="cnt"><span><b></b>posts</span><span><b></b>seguidores</span><span><b></b>seguindo</span></div></div>
+          <div class="handle">@suamarca<small>Perfil profissional · exemplo</small></div>
+          <div class="bio"><i></i><i></i><i></i></div>
+          <div class="follow"><span class="a">Seguir</span><span class="b">Seguindo ✓</span></div>
+          <div class="hl"><span>Sobre</span><span>Serviços</span><span>Agenda</span></div>
+          <div class="grid9" id="g9"><i></i><i class="reel"></i><i></i><i></i><i class="reel"></i><i></i><i></i><i></i><i class="reel"></i></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ JORNADA DO CLIENTE ============ -->
+<section class="pad band-k" id="jornada">
+  <div class="wrap">
+    <div class="jhead rv">
+      <div class="shead"><p class="kicker">Jornada</p><h2 class="h-l">Do primeiro <em>oi</em> à história no ar.</h2></div>
+      <p class="lede">Sem tabela fechada. Cada proposta nasce de uma conversa sobre o que você quer contar.</p>
+    </div>
+    <div class="track" data-track>
+      <div class="rail"><i></i></div><span class="dot" aria-hidden="true"></span>
+      <div class="stop" data-st=".02">
+        <span class="num">1</span>
+        <div class="mini" aria-hidden="true"><span class="bub">Olá, Yllustre! Gostaria de solicitar um orçamento.</span><span class="dots"><i></i><i></i><i></i></span></div>
+        <h3>Você chama no WhatsApp</h3><p>Uma mensagem já basta para começar.</p>
+      </div>
+      <div class="stop" data-st=".24">
+        <span class="num">2</span>
+        <div class="mini" aria-hidden="true"><div class="note"><span>Data e local</span><span>O que contar</span><span>Onde publicar</span></div></div>
+        <h3>A gente escuta</h3><p>Entendemos a data, o objetivo e o estilo que combina com você.</p>
+      </div>
+      <div class="stop" data-st=".46">
+        <span class="num">3</span>
+        <div class="mini" aria-hidden="true"><div class="doc"><b></b><i></i><i></i><i></i></div></div>
+        <h3>Proposta sob medida</h3><p>Você recebe um orçamento personalizado, sem pacote engessado.</p>
+      </div>
+      <div class="stop" data-st=".7">
+        <span class="num">4</span>
+        <div class="mini" aria-hidden="true"><div class="vfm"><span>REC</span></div></div>
+        <h3>Dia da captação</h3><p>Presença do começo ao fim, com olhar atento a cada detalhe.</p>
+      </div>
+      <div class="stop" data-st=".9">
+        <span class="num">5</span>
+        <div class="mini" aria-hidden="true"><div class="ph2"><div class="sb"><i></i><i></i><i></i></div><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div></div>
+        <h3>Conteúdo no ar</h3><p>Stories, vídeos e posts publicados para você reviver e compartilhar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELETOR DE MODOS ============ -->
+<section class="pad band-y" id="modos">
+  <div class="wrap">
+    <div class="shead rv">
+      <p class="kicker">Para quem filmamos</p>
+      <h2 class="h-l">Escolha o <em>modo</em> da sua história.</h2>
+    </div>
+    <div class="modes-g">
+      <div class="dial-w" id="dialW">
+        <div class="dial" id="dial">
+          <button type="button" style="--a:0deg" data-i="0">Casamentos</button>
+          <button type="button" style="--a:72deg" data-i="1">Formaturas</button>
+          <button type="button" style="--a:144deg" data-i="2">Saúde</button>
+          <button type="button" style="--a:216deg" data-i="3">Empresas</button>
+          <button type="button" style="--a:288deg" data-i="4">Marcas</button>
+        </div>
+        <div class="dial-c"><div><b id="dialL">C</b><span>MODO</span></div></div>
+      </div>
+      <div class="mode-p" aria-live="polite">
+        <span class="idx" id="mIdx">MODO 1 DE 5</span>
+        <h3 class="h-m" id="mT">Casamentos</h3>
+        <p class="txt" id="mD">Storymaker e filme do seu dia, do making of ao último brinde, com publicações enquanto a festa acontece.</p>
+        <div class="chips" id="mC"><span>Storymaker</span><span>Filmmaker</span><span>Videomaker</span></div>
+        <div class="mode-ctl">
+          <button class="rnd" type="button" id="mPrev" aria-label="Modo anterior">←</button>
+          <button class="rnd" type="button" id="mNext" aria-label="Próximo modo">→</button>
+          <a class="btn btn-k" id="mWa" href="https://wa.me/5563992411073?text=Ol%C3%A1%2C%20Yllustre!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20casamento." target="_blank" rel="noopener">Quero para mim <span class="ar">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVIÇOS ============ -->
+<section class="pad band-k" id="servicos">
+  <div class="wrap">
+    <div class="jhead rv">
+      <div class="shead"><p class="kicker">O que fazemos</p><h2 class="h-l">Uma equipe, todos os <em>ângulos.</em></h2></div>
+      <p class="lede">Planejamos, captamos e entregamos conteúdo para emocionar pessoas e movimentar marcas.</p>
+    </div>
+    <div class="svc-g" id="svcG">
+      <article class="svc rv">
+        <div class="mn mn-story" aria-hidden="true"><div class="p"><div class="sb"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i></div><span class="c"></span></div></div>
+        <span class="grp">Captar</span><h3>Storymaker</h3>
+        <p>Bastidores, momentos-chave e publicações em tempo real durante o evento.</p>
+        <a class="go" data-msg="Olá, Yllustre! Quero um orçamento de Storymaker." href="https://wa.me/5563992411073" target="_blank" rel="noopener">Pedir orçamento ↗</a>
+      </article>
+      <article class="svc rv">
+        <div class="mn mn-video" aria-hidden="true"><div class="t"><i style="flex:3"></i><i style="flex:2"></i><i style="flex:4"></i><i style="flex:2"></i></div><div class="t b"><i style="flex:5"></i><i style="flex:4"></i><i style="flex:3"></i></div><span class="pl"></span></div>
+        <span class="grp">Captar</span><h3>Videomaker</h3>
+        <p>Vídeos para campanhas, redes sociais, eventos corporativos e presença digital.</p>
+        <a class="go" data-msg="Olá, Yllustre! Quero um orçamento de vídeo." href="https://wa.me/5563992411073" target="_blank" rel="noopener">Pedir orçamento ↗</a>
+      </article>
+      <article class="svc rv">
+        <div class="mn mn-film" aria-hidden="true"><div class="sc"></div><span class="st">— Para sempre.</span></div>
+        <span class="grp">Captar</span><h3>Filmmaker</h3>
+        <p>Filmes com narrativa e emoção para casamentos, formaturas e celebrações.</p>
+        <a class="go" data-msg="Olá, Yllustre! Quero um orçamento de filme." href="https://wa.me/5563992411073" target="_blank" rel="noopener">Pedir orçamento ↗</a>
+      </article>
+      <article class="svc rv">
+        <div class="mn mn-social" aria-hidden="true" id="mnSocial"></div>
+        <span class="grp">Posicionar</span><h3>Social Media</h3>
+        <p>Gestão de Instagram e posicionamento estratégico para profissionais e empresas.</p>
+        <a class="go" data-msg="Olá, Yllustre! Quero um orçamento de Social Media." href="https://wa.me/5563992411073" target="_blank" rel="noopener">Pedir orçamento ↗</a>
+      </article>
+      <article class="svc rv">
+        <div class="mn mn-design" aria-hidden="true"><svg viewBox="0 0 160 100"><circle class="g" cx="80" cy="50" r="40"/><line class="g" x1="20" y1="50" x2="140" y2="50"/><line class="g" x1="80" y1="4" x2="80" y2="96"/><path class="ym" pathLength="1" d="M56 22 80 52 104 22M80 52v30"/></svg></div>
+        <span class="grp">Posicionar</span><h3>Design</h3>
+        <p>Identidade visual e peças gráficas que tornam a marca reconhecível.</p>
+        <a class="go" data-msg="Olá, Yllustre! Quero um orçamento de Design." href="https://wa.me/5563992411073" target="_blank" rel="noopener">Pedir orçamento ↗</a>
+      </article>
+      <article class="svc rv">
+        <div class="mn mn-lp" aria-hidden="true"><div class="br"><div class="bb"><i></i><i></i><i></i></div><div class="bc"><i class="t"></i><i></i><span class="cta">Agendar</span></div><svg class="cur" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#090909" stroke="#fffdf4" stroke-width="1.5"/></svg><span class="toast">Novo contato</span></div></div>
+        <span class="grp">Posicionar</span><h3>Landing Pages</h3>
+        <p>Páginas responsivas pensadas para transformar visitas em conversas.</p>
+        <a class="go" data-msg="Olá, Yllustre! Quero um orçamento de Landing Page." href="https://wa.me/5563992411073" target="_blank" rel="noopener">Pedir orçamento ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CRÉDITOS ============ -->
+<section class="pad credits band-y" id="clientes">
+  <div class="wrap">
+    <div class="shead"><p class="kicker">Marcas que confiam</p><h2 class="h-l">Boas histórias deixam <em>marcas.</em></h2></div>
+    <div class="roll" id="roll">
+      <span class="n">Instituto Queiroz</span>
+      <span class="n">Clínica Vivence</span>
+      <span class="n">Oral Office</span>
+      <span class="n">Celebrate Festas</span>
+      <span class="n">Clínica SD</span>
+      <span class="n">Sabrina Fernandes</span>
+      <span class="n">Mayne Studio</span>
+      <span class="n">Lázara</span>
+    </div>
+    <div class="cred-end"><span class="ex">Captação, edição e direção · Yllustre</span><p>O próximo nome pode ser o seu.</p></div>
+  </div>
+</section>
+
+<!-- ============ DÚVIDAS ============ -->
+<section class="pad band-k" id="duvidas">
+  <div class="wrap faq-g">
+    <div class="shead rv"><p class="kicker">Dúvidas</p><h2 class="h-l">Antes de <em>começar.</em></h2></div>
+    <div class="faq">
+      <details><summary>Quanto custa?</summary><p>Cada projeto tem orçamento personalizado. Conte pelo WhatsApp o que você precisa e montamos uma proposta sob medida.</p></details>
+      <details><summary>Os stories são publicados durante o evento?</summary><p>Sim. O storymaker acompanha o evento e publica bastidores e momentos-chave em tempo real.</p></details>
+      <details><summary>Vocês atendem profissionais da saúde e empresas?</summary><p>Sim. Cuidamos do posicionamento de médicos, dentistas, clínicas, empresas e marcas pessoais, com social media, vídeo, design e landing pages.</p></details>
+      <details><summary>A mesma equipe grava e cuida do Instagram?</summary><p>Sim. Captação, edição, design e social media ficam com a equipe da Yllustre, então tudo sai com a mesma linguagem.</p></details>
+      <details><summary>Como faço para contratar?</summary><p>Chame no WhatsApp, conte a data ou o objetivo e a equipe responde com os próximos passos.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="pad final band-y" id="contato">
+  <div class="wrap final-g">
+    <div class="rv">
+      <p class="kicker">Vamos começar?</p>
+      <h2 class="h-xl" style="margin-top:18px;font-size:clamp(2.5rem,1rem + 6vw,6.6rem)">Qual história você quer <em>ver acontecer?</em></h2>
+      <fieldset class="subj" id="subj">
+        <legend>Sobre o que vamos conversar?</legend>
+        <div class="opts">
+          <input type="radio" name="assunto" id="as1" value="casamento" checked><label for="as1">Casamento</label>
+          <input type="radio" name="assunto" id="as2" value="formatura"><label for="as2">Formatura</label>
+          <input type="radio" name="assunto" id="as3" value="evento"><label for="as3">Evento</label>
+          <input type="radio" name="assunto" id="as4" value="Social Media"><label for="as4">Social Media</label>
+          <input type="radio" name="assunto" id="as5" value="Design"><label for="as5">Design</label>
+          <input type="radio" name="assunto" id="as6" value="Landing Page"><label for="as6">Landing Page</label>
+          <input type="radio" name="assunto" id="as7" value="vídeo para a minha marca"><label for="as7">Vídeo para marca</label>
+        </div>
+      </fieldset>
+      <div class="ctas">
+        <a class="btn btn-k" id="finalWa" href="https://wa.me/5563992411073?text=Ol%C3%A1%2C%20Yllustre!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Conversar no WhatsApp <span class="ar">↗</span></a>
+        <a class="btn btn-o" href="https://www.instagram.com/yllustre_agencia/" target="_blank" rel="noopener">@yllustre_agencia <span class="ar">↗</span></a>
+      </div>
+      <div class="wa">WhatsApp <output id="waNum">+55 63 99241-1073</output><button class="copy" id="copyBtn" type="button">Copiar</button></div>
+    </div>
+    <button class="clap" id="clap" type="button" aria-label="Bater a claquete">
+      <svg viewBox="0 0 300 250" aria-hidden="true">
+        <rect x="10" y="80" width="280" height="160" rx="10" fill="#090909"/>
+        <g class="arm"><rect x="10" y="40" width="280" height="38" rx="6" fill="#090909"/>
+          <path d="M40 40h34l-22 38H18zM110 40h34l-22 38H88zM180 40h34l-22 38h-34zM250 40h34l-22 38h-34z" fill="#fffdf4"/></g>
+        <circle cx="22" cy="79" r="6" fill="#ffe100"/>
+        <line x1="10" y1="140" x2="290" y2="140" stroke="rgba(255,253,244,.2)"/>
+        <line x1="10" y1="192" x2="290" y2="192" stroke="rgba(255,253,244,.2)"/>
+        <line x1="150" y1="140" x2="150" y2="240" stroke="rgba(255,253,244,.2)"/>
+        <text class="lbl" x="26" y="102">PRODUÇÃO</text><text class="valy" x="26" y="126">YLLUSTRE</text>
+        <text class="lbl" x="26" y="158">CENA</text><text class="val" x="26" y="182" id="clapScene">Casamento</text>
+        <text class="lbl" x="166" y="158">TAKE</text><text class="val" x="166" y="182">01</text>
+        <text class="lbl" x="26" y="210">DIREÇÃO</text><text class="val" x="26" y="232">Yllustre</text>
+        <text class="lbl" x="166" y="210">DATA</text><text class="val" x="166" y="232">A combinar</text>
+      </svg>
+    </button>
+  </div>
+</section>
+</main>
+
+<footer class="band-k">
+  <div class="wrap">
+    <a class="tnav-logo" href="#inicio"><b aria-hidden="true"></b>YLLUSTRE</a>
+    <span class="sl">Histórias reais. Conteúdos que posicionam.</span>
+    <nav aria-label="Rodapé"><a href="#servicos">Serviços</a><a href="#processo">Como funciona</a><a href="#contato">Contato</a><a href="https://www.instagram.com/yllustre_agencia/" target="_blank" rel="noopener">Instagram ↗</a></nav>
+    <span>© Yllustre. Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+<script>
+/* ===== Motor de cenas (skill paginas-impactantes · shared.js) ===== */
+(() => {
+  const root = document.documentElement; root.classList.add('js');
+  document.addEventListener('touchstart', () => {}, { passive: true }); // :active no iOS
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) root.classList.add('reduce');
+  const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), hooks = [];
+  const M = window.SITE = { reduce, $, $$, clamp, onScroll: fn => hooks.push(fn),
+    whileVisible(el, start, stop) { // laço só enquanto está na tela
+      if (!el) return; if (reduce) return start(true);
+      let on = false;
+      new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting && !on) { on = true; start(false); }
+        else if (!e.isIntersecting && on) { on = false; stop && stop(); }
+      }), { threshold: .15 }).observe(el);
+    } };
+  const scenes = $$('[data-scene]').map(el => { const n = +el.dataset.n, bar = $('.bar', el);
+    if (bar) bar.innerHTML = '<i></i>'.repeat(n);
+    return { el, n, caps: $$('.caps li', el), bars: bar ? $$('i', bar) : [], s: -1 }; });
+  const setStep = (sc, s) => { if (sc.s === s) return; sc.s = s; sc.el.dataset.s = s;
+    sc.caps.forEach((c, i) => c.classList.toggle('on', i === s));
+    sc.bars.forEach((b, i) => b.classList.toggle('on', i <= s));
+    sc.el.dispatchEvent(new CustomEvent('step', { detail: s })); };
+  const tracks = $$('[data-track]').map(el => ({ el, st: $$('[data-st]', el) }));
+  const frame = () => { const vh = innerHeight;
+    scenes.forEach(sc => { const r = sc.el.getBoundingClientRect(), span = r.height - vh;
+      const p = reduce ? 1 : clamp(span > 0 ? -r.top / span : 0);
+      sc.el.style.setProperty('--p', p.toFixed(4));
+      setStep(sc, reduce ? sc.n - 1 : Math.min(sc.n - 1, Math.floor(p * sc.n))); });
+    tracks.forEach(t => { const r = t.el.getBoundingClientRect();
+      const v = reduce ? 1 : clamp((vh * .62 - r.top) / r.height);
+      t.el.style.setProperty('--t', v.toFixed(4));
+      t.st.forEach(s => s.classList.toggle('on', v >= +s.dataset.st)); });
+    hooks.forEach(fn => fn(vh)); };
+  let q = 0; const kick = () => { if (!q) q = requestAnimationFrame(() => { q = 0; frame(); }); };
+  addEventListener('scroll', kick, { passive: true }); addEventListener('resize', kick);
+  const enter = $$('.rv');
+  if (!reduce && 'IntersectionObserver' in window) {
+    enter.forEach(el => { if (el.getBoundingClientRect().top > innerHeight * .92) el.classList.add('wait'); });
+    const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return;
+      requestAnimationFrame(() => e.target.classList.remove('wait')); io.unobserve(e.target); }),
+      { rootMargin: '0px 0px -12% 0px' });
+    enter.forEach(el => io.observe(el));
+  }
+  M.ready = () => { frame(); document.fonts?.ready.then(kick); };
+})();
+
+/* ===== Página: Yllustre (início) ===== */
+(() => {
+  const { $, $$, clamp, reduce } = SITE;
+  const WA = 'https://wa.me/5563992411073?text=';
+  const lerp = (a, b, t) => a + (b - a) * t, smooth = t => t * t * (3 - 2 * t);
+  const safe = fn => { try { fn(); } catch (e) { console.error(e); } };
+  const onResize = (el, fn) => { if ('ResizeObserver' in window) new ResizeObserver(fn).observe(el); else addEventListener('resize', fn); };
+
+  /* Bokeh desenhado em canvas (brilhos da paleta) */
+  function Bokeh(cv, opt) {
+    const ctx = cv.getContext('2d'); let w = 1, h = 1, parts = [], focus = 0, raf = 0, last = 0;
+    const draw = (dt, now) => {
+      ctx.clearRect(0, 0, w, h); ctx.globalCompositeOperation = 'lighter';
+      const f = focus, t = now / 1000;
+      for (const p of parts) {
+        p.x += p.vx * dt; p.y += p.vy * dt;
+        if (p.y < -p.r) p.y = h + p.r; if (p.x < -p.r) p.x = w + p.r; if (p.x > w + p.r) p.x = -p.r;
+        const r = Math.max(2, p.r * (1 - f * .8)), soft = .85 - f * .68, a = Math.min(1, p.a * (.72 + .28 * Math.sin(p.ph + t * .9)) * (1 + f * 1.4));
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r);
+        g.addColorStop(0, `rgba(${p.c},${a * .5})`);
+        g.addColorStop(Math.max(.05, 1 - soft), `rgba(${p.c},${a * .45})`);
+        g.addColorStop(Math.min(.97, 1 - soft * .22), `rgba(${p.c},${a})`);
+        g.addColorStop(1, `rgba(${p.c},0)`);
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 6.2832); ctx.fill();
+      }
+      ctx.globalCompositeOperation = 'source-over';
+    };
+    const loop = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; draw(dt, now); raf = requestAnimationFrame(loop); };
+    this.resize = (W, H) => {
+      const dpr = Math.min(2, devicePixelRatio || 1);
+      if (W) { cv.style.width = W + 'px'; cv.style.height = H + 'px'; }
+      const r = cv.getBoundingClientRect(); w = Math.max(1, W || r.width); h = Math.max(1, H || r.height);
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      let seed = 7; const rnd = () => (seed = seed * 16807 % 2147483647, (seed - 1) / 2147483646);
+      const n = Math.round(clamp(w * h / 15000, 16, opt.max || 44)), Mx = Math.max(w, h); parts = [];
+      for (let i = 0; i < n; i++) parts.push({ x: rnd() * w, y: rnd() * h, r: (.035 + rnd() * .085) * Mx * (opt.scale || 1), c: opt.colors[i % opt.colors.length], a: .1 + rnd() * .24, vx: (rnd() - .5) * 9, vy: -3 - rnd() * 7, ph: rnd() * 6.28 });
+      draw(0, performance.now());
+    };
+    this.focus = f => { focus = f; if (!raf) draw(0, performance.now()); };
+    this.start = () => { if (raf) return; last = performance.now(); raf = requestAnimationFrame(loop); };
+    this.stop = () => { cancelAnimationFrame(raf); raf = 0; };
+  }
+
+  /* Menu do celular */
+  safe(() => {
+    const btn = $('#tnavBtn'), dd = $('#tnavDd');
+    const set = open => { document.body.classList.toggle('tnav-open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu'); };
+    btn.addEventListener('click', () => set(!document.body.classList.contains('tnav-open')));
+    $$('a', dd).forEach(a => a.addEventListener('click', () => set(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+  });
+
+  /* Abertura: visor com foco que puxa na rolagem */
+  safe(() => {
+    const hero = $('#hero'), bk = new Bokeh($('#bkHero'), { colors: ['255,225,0', '255,253,244', '255,190,60', '255,236,170'], max: 42 });
+    const fs = $('#focusScale'), ret = $('.reticle'), tc = $('#tc'), vtc = $('#vtc');
+    bk.resize(); onResize(hero, () => bk.resize());
+    SITE.onScroll(() => { const r = hero.getBoundingClientRect(); if (r.bottom < 0) return;
+      const f = clamp(.12 + clamp(-r.top / r.height) * 1.6); bk.focus(f); fs.style.setProperty('--f', f); ret.style.setProperty('--f', f); });
+    let fr = 12 * 24 + 4, fr2 = 41 * 24 + 12, iv = 0;
+    const pad = n => (n < 10 ? '0' : '') + n, fmt = f => { const s = Math.floor(f / 24); return pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s / 60) % 60) + ':' + pad(s % 60) + ':' + pad(f % 24); };
+    SITE.whileVisible(hero, still => { if (still) return; bk.start(); iv = setInterval(() => { fr++; fr2++; tc.textContent = fmt(fr); vtc.textContent = fmt(fr2); }, 1000 / 24); }, () => { bk.stop(); clearInterval(iv); });
+  });
+
+  /* Cena 1: o quadro muda de formato (valor contínuo de --p) */
+  safe(() => {
+    const sec = $('#formatos'), stage = $('#stage'), frame = $('#frame'), lays = $$('.lay', frame), guides = $$('.guide', stage);
+    const A = [9 / 16, 16 / 9, 2.39]; let W = 300, H = 400, lastP = 0;
+    const bk = new Bokeh($('#bkFrame'), { colors: ['255,225,0', '255,253,244', '255,170,80'], max: 30, scale: .8 });
+    const box = a => { const w = Math.min(W, H * a); return [w, w / a]; };
+    const render = p => {
+      const s = clamp(p * 3 - .5, 0, 2), seg = Math.min(1, Math.floor(s)), t = s - seg, tt = smooth(clamp((t - .28) / .44)), cur = seg + tt;
+      const b = box(lerp(A[seg], A[seg + 1], tt));
+      frame.style.width = b[0] + 'px'; frame.style.height = b[1] + 'px'; frame.style.setProperty('--fw', Math.round(b[0]));
+      frame.style.borderRadius = lerp(18, 6, cur / 2) + 'px';
+      lays.forEach((l, i) => { l.style.opacity = clamp(1 - Math.abs(cur - i) * 1.8); });
+      bk.focus(.35 + .4 * Math.sin(p * Math.PI));
+    };
+    const measure = () => {
+      W = stage.clientWidth; H = stage.clientHeight;
+      guides.forEach(g => { const b = box(+g.dataset.a); g.style.width = b[0] + 'px'; g.style.height = b[1] + 'px'; });
+      const m = box(A[2]), m2 = box(A[0]); bk.resize(Math.max(m[0], m2[0]), Math.max(m[1], m2[1]));
+      render(lastP);
+    };
+    measure(); onResize(stage, measure);
+    SITE.onScroll(() => { const p = +sec.style.getPropertyValue('--p') || 0; if (p !== lastP) { lastP = p; render(p); } });
+    SITE.whileVisible(sec, still => { if (!still) bk.start(); }, () => bk.stop());
+  });
+
+  /* Cena 2: o Instagram se monta (estado por etapa + grade contínua) */
+  safe(() => {
+    const sec = $('#processo'), tiles = $$('#g9 i');
+    SITE.onScroll(() => {
+      const p = +sec.style.getPropertyValue('--p') || 0, n = Math.round(clamp((p * 4 - 2) / .85) * 9);
+      tiles.forEach((t, i) => t.classList.toggle('on', i < n));
+    });
+  });
+
+  /* Seletor de modos */
+  safe(() => {
+    const M = [
+      { t: 'Casamentos', l: 'C', d: 'Storymaker e filme do seu dia, do making of ao último brinde, com publicações enquanto a festa acontece.', c: ['Storymaker', 'Filmmaker', 'Videomaker'], m: 'Olá, Yllustre! Quero um orçamento para o meu casamento.' },
+      { t: 'Formaturas', l: 'F', d: 'Cobertura da colação ao baile, com stories na hora e um filme para a turma guardar.', c: ['Storymaker', 'Videomaker', 'Filmmaker'], m: 'Olá, Yllustre! Quero um orçamento para uma formatura.' },
+      { t: 'Saúde', l: 'S', d: 'Médicos, dentistas e especialistas com presença profissional e conteúdo que gera confiança antes da primeira consulta.', c: ['Social Media', 'Videomaker', 'Design'], m: 'Olá, Yllustre! Sou profissional da saúde e quero posicionar meu Instagram.' },
+      { t: 'Clínicas e empresas', l: 'E', d: 'A mesma marca em todos os pontos de contato: Instagram, vídeo institucional e uma página que converte.', c: ['Social Media', 'Design', 'Landing Pages'], m: 'Olá, Yllustre! Quero um orçamento para a minha empresa.' },
+      { t: 'Marcas pessoais', l: 'M', d: 'Autoridade e personalidade para quem empreende e quer ser lembrado pelo público certo.', c: ['Social Media', 'Videomaker', 'Landing Pages'], m: 'Olá, Yllustre! Quero fortalecer a minha marca pessoal.' }
+    ];
+    const dial = $('#dial'), btns = $$('button', dial); let cur = 0, rot = 0;
+    const set = i => {
+      const n = (i % 5 + 5) % 5; let d = n - cur; if (d > 2) d -= 5; if (d < -2) d += 5; rot -= d * 72; cur = n;
+      dial.style.setProperty('--r', rot + 'deg');
+      btns.forEach((b, k) => { b.classList.toggle('on', k === n); b.setAttribute('aria-pressed', k === n); });
+      const m = M[n]; $('#mT').textContent = m.t; $('#mD').textContent = m.d; $('#mIdx').textContent = 'MODO ' + (n + 1) + ' DE 5'; $('#dialL').textContent = m.l;
+      const C = $('#mC'); C.textContent = ''; m.c.forEach(x => { const s = document.createElement('span'); s.textContent = x; C.appendChild(s); });
+      $('#mWa').href = WA + encodeURIComponent(m.m);
+    };
+    btns.forEach(b => b.addEventListener('click', () => set(+b.dataset.i)));
+    $('#mPrev').addEventListener('click', () => set(cur - 1));
+    $('#mNext').addEventListener('click', () => set(cur + 1));
+    const w = $('#dialW'); let sx = null;
+    w.addEventListener('pointerdown', e => { sx = e.clientX; });
+    w.addEventListener('pointerup', e => { if (sx == null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) set(cur + (dx < 0 ? 1 : -1)); });
+    set(0);
+  });
+
+  /* Serviços: minis só animam na tela; links com assunto pronto */
+  safe(() => {
+    const soc = $('#mnSocial'); let h = ''; for (let i = 0; i < 18; i++) h += `<i style="--k:${(i * 7) % 18}"></i>`; soc.innerHTML = h;
+    const g = $('#svcG');
+    SITE.whileVisible(g, still => { if (!still) g.classList.add('play'); }, () => g.classList.remove('play'));
+    $$('[data-msg]').forEach(a => { a.href = WA + encodeURIComponent(a.dataset.msg); });
+  });
+
+  /* Créditos sobem como no fim do filme */
+  safe(() => {
+    if (reduce) return; const sec = $('#clientes'), roll = $('#roll');
+    SITE.onScroll(vh => { const r = sec.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return;
+      const p = clamp((vh - r.top) / (vh + r.height)); roll.style.transform = `translate3d(0,${((.5 - p) * 90).toFixed(1)}px,0)`; });
+  });
+
+  /* Contato: assunto escolhido, claquete e cópia do número */
+  safe(() => {
+    const a = $('#finalWa'), sc = $('#clapScene'), clap = $('#clap');
+    const label = { 'casamento': 'Casamento', 'formatura': 'Formatura', 'evento': 'Evento', 'Social Media': 'Social Media', 'Design': 'Design', 'Landing Page': 'Landing Page', 'vídeo para a minha marca': 'Vídeo' };
+    const hit = () => { clap.classList.remove('go'); void clap.offsetWidth; clap.classList.add('go'); };
+    const upd = () => { const v = ($('input[name="assunto"]:checked') || {}).value || 'casamento';
+      a.href = WA + encodeURIComponent('Olá, Yllustre! Quero um orçamento de ' + v + '.'); sc.textContent = label[v] || 'Sua história'; };
+    $$('input[name="assunto"]').forEach(i => i.addEventListener('change', () => { upd(); if (!reduce) hit(); }));
+    upd();
+    clap.addEventListener('click', hit);
+    let once = false; SITE.whileVisible(clap, still => { if (!still && !once) { once = true; setTimeout(hit, 350); } });
+    const b = $('#copyBtn'), n = $('#waNum');
+    b.addEventListener('click', () => {
+      const ok = () => { b.textContent = 'Copiado'; setTimeout(() => { b.textContent = 'Copiar'; }, 1800); };
+      const sel = () => { const r = document.createRange(); r.selectNodeContents(n); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+      try { navigator.clipboard.writeText('+5563992411073').then(ok, sel); } catch (e) { sel(); }
+    });
+  });
+
+  SITE.ready();
+})();
+</script>
+</body>
+</html>
